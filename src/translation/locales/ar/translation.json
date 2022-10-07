@@ -1,3 +1,22 @@
 {
-    "heading": "عنوان"
+    "credit_book": "دفتر الائتمان",
+    "login": "تسجيل الدخول",
+    "registration": "التسجيل",
+    "member": "ليس عضوا؟",
+    "register": "تسجيل",
+    "email": "البريد الإلكتروني",
+    "email_holder": "أدخل بريدك الإلكتروني",
+    "password": "كلمة المرور",
+    "password_holder": "ادخل رقمك السري",
+    "forget": "نسيت كلمة المرور؟",
+    "email_error": "البريد الالكتروني مطلوب",
+    "password_error": "كلمة المرور مطلوبة",
+    "already_account": "هل لديك حساب؟",
+    "register_login": "تسجيل الدخول",
+    "full_name": "الاسم الكامل",
+    "full_name_error": "الإسم الكامل ضروري",
+    "phone": "رقم الهاتف",
+    "phone_error": "رقم الهاتف المحمول مطلوب",
+    "std": "هوية الطالب",
+    "std_error": "مطلوب معرف الطالب"
 }

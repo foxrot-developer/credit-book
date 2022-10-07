@@ -1,3 +1,22 @@
 {
-    "heading": "Heading"
+    "credit_book": "CREDIT BOOK",
+    "login": "LOGIN",
+    "registration": "REGISTRATION",
+    "member": "Not a member?",
+    "register": "Register",
+    "email": "Email",
+    "email_holder": "Enter your email",
+    "password": "Password",
+    "password_holder": "Enter your password",
+    "forget": "Forget Password?",
+    "email_error": "Email is required",
+    "password_error": "Password is required",
+    "already_account": "Already have an account?",
+    "register_login": "Login",
+    "full_name": "Full name",
+    "full_name_error": "Full name is required",
+    "phone": "Phone number",
+    "phone_error": "Mobile number is required",
+    "std": "Student id",
+    "std_error": "Student id is required"
 }
