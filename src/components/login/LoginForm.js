@@ -34,8 +34,8 @@ const LoginForm = () => {
             {(formik) => (
                 <React.Fragment>
                     <Form>
-                        <TextField label={t('email')} name='email' type='email' placeholder={t('email_holder')} />
-                        <TextField label={t('password')} name='password' type='password' placeholder={t('password_holder')} />
+                        <TextField label={t('email')} name='email' type='email' />
+                        <TextField label={t('password')} name='password' type='password' />
                         <div className='text-end'>
                             <p className='forget-password'>{t('forget')}</p>
                         </div>
