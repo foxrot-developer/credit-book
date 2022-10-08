@@ -3,10 +3,13 @@ import * as Yup from 'yup';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Button } from 'react-bootstrap';
 import { useTranslation } from "react-i18next";
+import { useNavigate } from 'react-router-dom';
 
 import TextField from '../../shared/TextField';
 
 const RegistrationForm = () => {
+
+    const navigate = useNavigate();
 
     const { t } = useTranslation();
 
@@ -32,6 +35,7 @@ const RegistrationForm = () => {
 
     const registrationHandler = (data) => {
         console.log({ data });
+        navigate('/otp');
     }
 
     return (

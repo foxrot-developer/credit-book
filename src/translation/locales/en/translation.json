@@ -24,5 +24,8 @@
     "type": "Are you borrower or a lender",
     "type_error": "This field is required",
     "borrower": "Borrower",
-    "lender": "Lender"
+    "lender": "Lender",
+    "otp": "Enter OTP",
+    "otp_error": "OTP is required",
+    "submit": "Submit"
 }
