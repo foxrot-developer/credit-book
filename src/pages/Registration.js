@@ -26,7 +26,7 @@ const Registration = () => {
                         <Fade direction='left'>
                             <div className='form-area'>
                                 <div>
-                                    <select className="form-select" defaultValue={localStorage.getItem("lang") || "en"} aria-label="Default select example" onChange={(e) => changeLanguage(e.target.value)}>
+                                    <select className="form-select" defaultValue={"en"} aria-label="Default select example" onChange={(e) => changeLanguage(e.target.value)}>
                                         <option value="en">English</option>
                                         <option value="ar">عربي</option>
                                     </select>
