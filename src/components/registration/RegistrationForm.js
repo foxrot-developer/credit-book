@@ -17,6 +17,7 @@ const RegistrationForm = () => {
         fullName: '',
         phone: '',
         stdId: '',
+        national: '',
         level: 'level 1',
         email: '',
         password: '',
@@ -27,6 +28,7 @@ const RegistrationForm = () => {
         fullName: Yup.string().required(t('full_name_error')),
         phone: Yup.string().required(t('phone_error')),
         stdId: Yup.string().required(t('std_error')),
+        national: Yup.string().required(t('national_error')).min(10, t('national_length')).max(10, t('national_length')),
         level: Yup.string().required(t('level_error')),
         email: Yup.string().email().required(t('email_error')),
         password: Yup.string().required(t('password_error')),
@@ -49,7 +51,8 @@ const RegistrationForm = () => {
                     <Form>
                         <TextField label={t('full_name')} name='fullName' type='text' />
                         <TextField label={t('phone')} name='phone' type='text' />
-                        <TextField label={t('std')} name='stdId' type='text' />
+                        <TextField label={t('std')} name='stdId' type='text' style={{ textTransform: 'uppercase' }} />
+                        <TextField label={t('national')} name='national' type='text' />
                         <label htmlFor='level' className="form-label">{t('level')}</label>
                         <Field as="select" className="form-select mb-3" defaultValue="level 1" name="level">
                             <option value="level 1">{t('level1')}</option>

@@ -12,6 +12,7 @@ const Otp = () => {
     const changeLanguage = (lang) => {
         i18n.changeLanguage(lang);
         localStorage.setItem("lang", lang);
+        document.dir = i18n.dir();
     };
 
     return (

@@ -1,5 +1,5 @@
 {
-    "credit_book": "دفتر الائتمان",
+    "credit_book": "منصة اقراض بين الافراد",
     "login": "تسجيل الدخول",
     "registration": "التسجيل",
     "member": "ليس عضوا؟",
@@ -27,5 +27,8 @@
     "lender": "المُقرض",
     "otp": "أدخل OTP",
     "otp_error": "مطلوب OTP",
-    "submit": "إرسال"
+    "submit": "إرسال",
+    "national": "الهوية الوطنية",
+    "national_error": "الرقم القومي مطلوب",
+    "national_length": "يجب أن يحتوي الرقم القومي على 10 أرقام"
 }

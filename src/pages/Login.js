@@ -1,12 +1,11 @@
 import React from 'react';
-import { Col, Container, Image, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import { Fade } from "react-awesome-reveal";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from 'react-router-dom';
 
 import '../assets/css/login.css';
 import LoginForm from '../components/login/LoginForm';
-import LoginImg from '../assets/images/loan-approved-application-form-concept.jpg';
 
 const Login = () => {
 
@@ -17,13 +16,14 @@ const Login = () => {
     const changeLanguage = (lang) => {
         i18n.changeLanguage(lang);
         localStorage.setItem("lang", lang);
+        document.dir = i18n.dir();
     };
 
     return (
         <div className='body-container'>
             <Container>
-                <Row>
-                    <Col xs='12' lg='5'>
+                <Row className='d-flex align-items-center justify-content-center'>
+                    <Col xs='12' lg='6'>
                         <Fade direction='left'>
                             <div className='form-area'>
                                 <div>
@@ -37,11 +37,6 @@ const Login = () => {
                                 <LoginForm />
                                 <p className='text-center mt-3 text-light'>{t('member')} <span className='switch-form' onClick={() => navigate('/register')}>{t('register')}</span></p>
                             </div>
-                        </Fade>
-                    </Col>
-                    <Col xs='12' lg='7' className='form-img'>
-                        <Fade direction='right'>
-                            <Image fluid src={LoginImg} alt="Login" loading='lazy' className='form-img' />
                         </Fade>
                     </Col>
                 </Row>

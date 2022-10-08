@@ -1,5 +1,5 @@
 {
-    "credit_book": "CREDIT BOOK",
+    "credit_book": "P2P LENDING PLATFORM",
     "login": "LOGIN",
     "registration": "REGISTRATION",
     "member": "Not a member?",
@@ -27,5 +27,8 @@
     "lender": "Lender",
     "otp": "Enter OTP",
     "otp_error": "OTP is required",
-    "submit": "Submit"
+    "submit": "Submit",
+    "national": "National id",
+    "national_error": "National id is required",
+    "national_length": "National id should contain 10 digits"
 }

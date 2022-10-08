@@ -1,11 +1,10 @@
 import React from 'react';
 import { Fade } from 'react-awesome-reveal';
-import { Col, Container, Image, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import { useTranslation } from "react-i18next";
 import { useNavigate } from 'react-router-dom';
 
 import RegistrationForm from '../components/registration/RegistrationForm';
-import RegImg from '../assets/images/happy-young-asian-couple-realtor-agent.jpg';
 
 const Registration = () => {
 
@@ -16,13 +15,14 @@ const Registration = () => {
     const changeLanguage = (lang) => {
         i18n.changeLanguage(lang);
         localStorage.setItem("lang", lang);
+        document.dir = i18n.dir();
     };
 
     return (
         <div className='reg-form'>
             <Container>
-                <Row>
-                    <Col xs='12' lg='5'>
+                <Row className='d-flex align-items-center justify-content-center'>
+                    <Col xs='12' lg='6'>
                         <Fade direction='left'>
                             <div className='form-area'>
                                 <div>
@@ -36,11 +36,6 @@ const Registration = () => {
                                 <RegistrationForm />
                                 <p className='text-center mt-3 text-light'>{t('already_account')} <span className='switch-form' onClick={() => navigate('/')}>{t('register_login')}</span></p>
                             </div>
-                        </Fade>
-                    </Col>
-                    <Col xs='12' lg='7' className='form-img-reg'>
-                        <Fade direction='right'>
-                            <Image fluid src={RegImg} alt="Login" loading='lazy' className='form-img' />
                         </Fade>
                     </Col>
                 </Row>
