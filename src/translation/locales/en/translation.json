@@ -16,5 +16,13 @@
     "phone": "Phone number",
     "phone_error": "Mobile number is required",
     "std": "Student id",
-    "std_error": "Student id is required"
+    "std_error": "Student id is required",
+    "level": "Current level",
+    "level_error": "Current level is required",
+    "level1": "Level 1",
+    "level2": "Level 2",
+    "type": "Are you borrower or a lender",
+    "type_error": "This field is required",
+    "borrower": "Borrower",
+    "lender": "Lender"
 }
