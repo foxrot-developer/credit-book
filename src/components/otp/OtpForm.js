@@ -32,9 +32,11 @@ const OtpForm = () => {
                 <React.Fragment>
                     <Form>
                         <TextField label={t('otp')} name='otp' type='text' />
-                        <Button type='submit' className='w-100 btn btn-dark'>
-                            {t('submit')}
-                        </Button>
+                        <div className='text-center'>
+                            <Button type='submit' className='px-5 btn custom-btn'>
+                                {t('submit')}
+                            </Button>
+                        </div>
                     </Form>
                 </React.Fragment>
             )}

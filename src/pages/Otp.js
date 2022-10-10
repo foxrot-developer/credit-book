@@ -16,27 +16,30 @@ const Otp = () => {
     };
 
     return (
-        <div className='body-container'>
-            <Container>
-                <Row className='d-flex align-items-center justify-content-center'>
-                    <Col xs='12' lg='6'>
-                        <Fade direction='left'>
-                            <div className='form-area'>
-                                <div>
-                                    <select className="form-select" defaultValue={localStorage.getItem("lang") || "en"} aria-label="Default select example" onChange={(e) => changeLanguage(e.target.value)}>
-                                        <option value="en">English</option>
-                                        <option value="ar">عربي</option>
-                                    </select>
+        <React.Fragment>
+            <div className='body-container'>
+                <Container>
+                    <Row>
+                        <Fade direction='left' className='d-flex align-items-center justify-content-center'>
+                            <Col xs='12' lg='7'>
+                                <div className='page-section'>
+                                    <div className='logo-section'>
+                                        <h3 className='text-center fw-bold fs-4 text-light my-3'>{t('credit_book')}</h3>
+                                    </div>
+                                    <div className='form-area'>
+                                        <div className='text-end mb-5'>
+                                            <p className='switch-lang' onClick={localStorage.getItem("lang") === 'en' ? () => changeLanguage('ar') : () => changeLanguage('en')}>{t('switch_lng')}</p>
+                                        </div>
+                                        <h4 className='text-center fs-5 fw-bold mb-4'>OTP</h4>
+                                        <OtpForm />
+                                    </div>
                                 </div>
-                                <h3 className='text-center fw-bold text-light my-3'>{t('credit_book')}</h3>
-                                <h4 className='text-center fw-bold text-light'>OTP</h4>
-                                <OtpForm />
-                            </div>
+                            </Col>
                         </Fade>
-                    </Col>
-                </Row>
-            </Container>
-        </div>
+                    </Row>
+                </Container>
+            </div>
+        </React.Fragment>
     )
 }
 

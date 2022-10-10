@@ -30,5 +30,6 @@
     "submit": "Submit",
     "national": "National id",
     "national_error": "National id is required",
-    "national_length": "National id should contain 10 digits"
+    "national_length": "National id should contain 10 digits",
+    "switch_lng": "Switch language"
 }

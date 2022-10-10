@@ -11,6 +11,7 @@ function App() {
 
   useEffect(() => {
     document.dir = i18n.dir();
+    localStorage.setItem('lang', 'en')
   }, [i18n]);
 
   return (

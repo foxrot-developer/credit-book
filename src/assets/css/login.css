@@ -1,3 +1,27 @@
+.logo-section {
+  background-color: var(--primary-color);
+  display: grid;
+  place-items: center;
+  padding: 0 20px !important;
+}
+
+.switch-lang {
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.switch-lang:hover {
+  color: var(--primary-color);
+}
+
+.page-section {
+  display: flex;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
 .body-container {
   width: 100%;
   height: 100vh;
@@ -11,17 +35,14 @@
   margin: 50px 0;
 }
 
+.switch-forms {
+  font-size: 13px;
+}
+
 .form-area {
-  background: linear-gradient(
-    0deg,
-    rgba(120, 118, 244, 1) 35%,
-    rgba(162, 59, 230, 1) 100%
-  );
   padding: 40px 20px;
-  border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
-    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
-    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  margin: 0 40px;
+  width: 100%;
 }
 
 .form-img {
@@ -49,7 +70,7 @@
 }
 
 @media screen and (max-width: 991px) {
-  .form-img {
+  .logo-section {
     display: none;
   }
 }

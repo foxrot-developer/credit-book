@@ -39,9 +39,11 @@ const LoginForm = () => {
                         <div className='text-end'>
                             <p className='forget-password'>{t('forget')}</p>
                         </div>
-                        <Button type='submit' className='w-100 btn btn-dark'>
-                            {t('login')}
-                        </Button>
+                        <div className='text-center'>
+                            <Button type='submit' className='px-5 btn custom-btn'>
+                                {t('login')}
+                            </Button>
+                        </div>
                     </Form>
                 </React.Fragment>
             )}
