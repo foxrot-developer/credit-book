@@ -35,7 +35,7 @@ const BorrowingRequestsTable = () => {
                                 <td>john@gmail.com</td>
                                 <td>$30</td>
                                 <td>
-                                    <div className='d-flex align-items-center justify-content-center'>
+                                    <div className='d-flex align-items-center justify-content-start'>
                                         <p className='me-2 text-success fw-bold action'>Approve</p>
                                         <p className='text-danger fw-bold action'>Reject</p>
                                     </div>

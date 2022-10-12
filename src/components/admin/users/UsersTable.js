@@ -43,7 +43,7 @@ const UsersTable = () => {
                                 <td>john@gmail.com</td>
                                 <td>Lender</td>
                                 <td>
-                                    <div className='d-flex align-items-center justify-content-center'>
+                                    <div className='d-flex align-items-center justify-content-start'>
                                         <p className='me-2 text-success fw-bold action'>Block</p>
                                         <p className='text-danger fw-bold action'>Unblock</p>
                                     </div>
