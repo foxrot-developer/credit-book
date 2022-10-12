@@ -3,6 +3,7 @@ import * as Yup from 'yup';
 import { Formik, Form } from 'formik';
 import { Button } from 'react-bootstrap';
 import { useTranslation } from "react-i18next";
+import { useNavigate } from 'react-router-dom';
 
 import TextField from '../../shared/TextField';
 import '../../assets/css/login-form.css';
@@ -10,6 +11,7 @@ import '../../assets/css/login-form.css';
 const LoginForm = () => {
 
     const { t } = useTranslation();
+    const navigate = useNavigate();
 
     const validValues = {
         email: '',
@@ -23,6 +25,7 @@ const LoginForm = () => {
 
     const loginHandler = (data) => {
         console.log({ data });
+        navigate('/dashboard/admin');
     }
 
     return (

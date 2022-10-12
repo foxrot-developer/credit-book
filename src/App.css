@@ -9,3 +9,37 @@
 body {
   font-family: "Montserrat", sans-serif !important;
 }
+
+.collapse-menu {
+  cursor: pointer;
+  font-size: 20px;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+.menu-icon {
+  margin-right: 10px;
+  font-weight: bold !important;
+  font-size: 20px;
+}
+
+.menu-item-link {
+  color: #000 !important;
+  text-decoration: none;
+}
+
+.sidebar-container {
+  background: linear-gradient(
+    0deg,
+    rgba(26, 234, 182, 1) 35%,
+    rgba(162, 59, 230, 1) 100%
+  ) !important;
+}
+
+.page-main {
+  background-color: #f6f7fb;
+}
+
+.action {
+  cursor: pointer;
+}

@@ -2,6 +2,7 @@ import './App.css';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useTranslation } from "react-i18next";
+import { ProSidebarProvider } from 'react-pro-sidebar';
 
 import NavigationRoutes from './routes/NavigationRoutes';
 
@@ -15,9 +16,11 @@ function App() {
   }, [i18n]);
 
   return (
-    <Router>
-      <NavigationRoutes />
-    </Router>
+    <ProSidebarProvider>
+      <Router>
+        <NavigationRoutes />
+      </Router>
+    </ProSidebarProvider>
   );
 }
 

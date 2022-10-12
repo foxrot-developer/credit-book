@@ -1,8 +1,13 @@
 .logo-section {
-  background-color: var(--primary-color);
+  /* background-color: var(--primary-color); */
   display: grid;
   place-items: center;
   padding: 0 20px !important;
+  background: linear-gradient(
+    0deg,
+    rgba(120, 118, 244, 1) 35%,
+    rgba(162, 59, 230, 1) 100%
+  );
 }
 
 .switch-lang {

@@ -1,0 +1,8 @@
+.table-main {
+  font-size: 14px;
+}
+
+.table-main thead {
+  background-color: var(--secondary);
+  color: #fff;
+}
