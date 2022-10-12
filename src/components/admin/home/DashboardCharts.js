@@ -75,12 +75,16 @@ const DashboardCharts = () => {
         <Row className='my-5'>
             <Col xs='12' lg='6' className='bg-light'>
                 <Zoom>
-                    <Line data={lendingData} options={options} />
+                    <div className='chart-section'>
+                        <Line data={lendingData} options={options} />
+                    </div>
                 </Zoom>
             </Col>
             <Col xs='12' lg='6'>
                 <Zoom>
-                    <Line data={borrowingData} options={borrowing_options} />
+                    <div className='chart-section'>
+                        <Line data={borrowingData} options={borrowing_options} />
+                    </div>
                 </Zoom>
             </Col>
         </Row>

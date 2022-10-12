@@ -43,3 +43,9 @@ body {
 .action {
   cursor: pointer;
 }
+
+.chart-section {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 10px;
+}
