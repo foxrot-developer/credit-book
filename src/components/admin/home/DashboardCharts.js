@@ -1,6 +1,7 @@
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { Line } from "react-chartjs-2";
+import { useTranslation } from "react-i18next";
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -25,12 +26,14 @@ ChartJS.register(
 
 const DashboardCharts = () => {
 
+    const { t } = useTranslation();
+
     const options = {
         responsive: true,
         plugins: {
             title: {
                 display: true,
-                text: 'Lending Data Chart',
+                text: t('lending_chart'),
             },
         },
     };
@@ -40,7 +43,7 @@ const DashboardCharts = () => {
         plugins: {
             title: {
                 display: true,
-                text: 'Borrowing Data Chart',
+                text: t('borrowing_chart'),
             },
         },
     };
@@ -49,7 +52,7 @@ const DashboardCharts = () => {
         labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
         datasets: [
             {
-                label: "Lending",
+                label: t('lending_text'),
                 data: [33, 25, 35, 51, 54, 76],
                 fill: false,
                 borderColor: "#7876F4",
@@ -62,7 +65,7 @@ const DashboardCharts = () => {
         labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
         datasets: [
             {
-                label: "Borrowing",
+                label: t('borrowing_text'),
                 data: [33, 25, 35, 51, 54, 76],
                 fill: true,
                 borderColor: "#F62B74",

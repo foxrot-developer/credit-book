@@ -4,10 +4,14 @@ import { FaUserFriends } from 'react-icons/fa';
 import { RiMoneyDollarCircleFill } from 'react-icons/ri';
 import { IoMdCash } from 'react-icons/io';
 import { Zoom } from "react-awesome-reveal";
+import { useTranslation } from "react-i18next";
 
 import '../../../assets/css/dashboard-cards.css';
 
 const DashboardCards = () => {
+
+    const { t } = useTranslation();
+
     return (
         <Row>
             <Col xs='12' lg='4'>
@@ -18,7 +22,7 @@ const DashboardCards = () => {
                                 <FaUserFriends className='card-icon' /> <p className='card-text'>120</p>
                             </Col>
                             <Col className='d-flex align-items-center justify-content-end'>
-                                <p className='card-total'>Total Users</p>
+                                <p className='card-total'>{t('total_users')}</p>
                             </Col>
                         </Row>
                         <Row className='my-2'>
@@ -26,7 +30,7 @@ const DashboardCards = () => {
                                 <RiMoneyDollarCircleFill className='card-icon' /> <p className='card-text'>100</p>
                             </Col>
                             <Col className='d-flex align-items-center justify-content-end'>
-                                <p className='card-total'>Lending Requests</p>
+                                <p className='card-total'>{t('lending_text')}</p>
                             </Col>
                         </Row>
                         <Row className='my-2'>
@@ -34,7 +38,7 @@ const DashboardCards = () => {
                                 <IoMdCash className='card-icon' /> <p className='card-text'>70</p>
                             </Col>
                             <Col className='d-flex align-items-center justify-content-end'>
-                                <p className='card-total'>Borrowing Requests</p>
+                                <p className='card-total'>{t('borrowing_text')}</p>
                             </Col>
                         </Row>
                     </div>
@@ -45,7 +49,7 @@ const DashboardCards = () => {
                     <div className='card-main lending-requests'>
                         <Row className='my-2'>
                             <Col className='text-start'>
-                                <p className='text-light'>Recent Lending Requests</p>
+                                <p className='text-light'>{t('recent_lending')}</p>
                             </Col>
                         </Row>
                         <Row className='my-2'>
@@ -72,7 +76,7 @@ const DashboardCards = () => {
                     <div className='card-main borrowing-requests'>
                         <Row className='my-2'>
                             <Col className='text-start'>
-                                <p className='text-light'>Recent Borrowing Requests</p>
+                                <p className='text-light'>{t('recent_borrowing')}</p>
                             </Col>
                         </Row>
                         <Row className='my-2'>

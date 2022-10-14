@@ -1,19 +1,23 @@
 import React from 'react';
 import { Table, Row, Col, Form, Button } from 'react-bootstrap';
 import { Zoom } from "react-awesome-reveal";
+import { useTranslation } from "react-i18next";
 
 const BorrowingRequestsTable = () => {
+
+    const { t } = useTranslation();
+
     return (
         <Zoom>
             <Row className='my-5 d-flex flex-column'>
                 <Col>
-                    <h4 className='fw-bold'>BORROWING REQUESTS</h4>
+                    <h4 className='fw-bold'>{t('borrowing_text')}</h4>
                 </Col>
                 <Col xs='12' lg='5' className='mb-3'>
                     <Form className='d-flex'>
-                        <Form.Control type="text" placeholder="Search User" className='me-2' />
+                        <Form.Control type="text" placeholder={t('search_user')} className='me-2' />
                         <Button type="submit" className='custom-btn'>
-                            Search
+                            {t('search_text')}
                         </Button>
                     </Form>
                 </Col>
@@ -21,11 +25,11 @@ const BorrowingRequestsTable = () => {
                     <Table className='table-main' striped bordered hover responsive>
                         <thead>
                             <tr>
-                                <th>Full Name</th>
-                                <th>Phone</th>
-                                <th>Email</th>
-                                <th>Borrowing Amount</th>
-                                <th>Actions</th>
+                                <th>{t('full_name_text')}</th>
+                                <th>{t('phone_text')}</th>
+                                <th>{t('email')}</th>
+                                <th>{t('borrowing_amount_text')}</th>
+                                <th>{t('actions_text')}</th>
                             </tr>
                         </thead>
                         <tbody>

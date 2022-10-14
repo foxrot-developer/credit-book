@@ -1,21 +1,25 @@
 import React from 'react';
 import { Table, Row, Col, Form, Button } from 'react-bootstrap';
 import { Zoom } from "react-awesome-reveal";
+import { useTranslation } from "react-i18next";
 
 import '../../../assets/css/users-table.css';
 
 const UsersTable = () => {
+
+    const { t } = useTranslation();
+
     return (
         <Zoom>
             <Row className='my-5 d-flex flex-column'>
                 <Col>
-                    <h4 className='fw-bold'>USERS</h4>
+                    <h4 className='fw-bold'>{t('users_text')}</h4>
                 </Col>
                 <Col xs='12' lg='5' className='mb-3'>
                     <Form className='d-flex'>
-                        <Form.Control type="text" placeholder="Search User" className='me-2' />
+                        <Form.Control type="text" placeholder={t('search_user')} className='me-2' />
                         <Button type="submit" className='custom-btn'>
-                            Search
+                            {t('search_text')}
                         </Button>
                     </Form>
                 </Col>
@@ -23,14 +27,14 @@ const UsersTable = () => {
                     <Table className='table-main' striped bordered hover responsive>
                         <thead>
                             <tr>
-                                <th>Full Name</th>
-                                <th>Phone</th>
-                                <th>Student Id</th>
-                                <th>National Id</th>
-                                <th>Current Level</th>
-                                <th>Email</th>
-                                <th>Type</th>
-                                <th>Actions</th>
+                                <th>{t('full_name_text')}</th>
+                                <th>{t('phone_text')}</th>
+                                <th>{t('std_text')}</th>
+                                <th>{t('national_text')}</th>
+                                <th>{t('current_text')}</th>
+                                <th>{t('email')}</th>
+                                <th>{t('type_text')}</th>
+                                <th>{t('actions_text')}</th>
                             </tr>
                         </thead>
                         <tbody>
