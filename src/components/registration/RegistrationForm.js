@@ -4,10 +4,14 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { Button, Col, Row } from 'react-bootstrap';
 import { useTranslation } from "react-i18next";
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import TextField from '../../shared/TextField';
+import { userRegistration } from '../../store/StoreIndex';
 
 const RegistrationForm = () => {
+
+    const dispatch = useDispatch();
 
     const navigate = useNavigate();
 
@@ -21,7 +25,7 @@ const RegistrationForm = () => {
         level: 'level 1',
         email: '',
         password: '',
-        type: 'borrower'
+        type: 'BORROWER'
     };
 
     const errorSchema = Yup.object().shape({
@@ -35,9 +39,16 @@ const RegistrationForm = () => {
         type: Yup.string().required(t('type_error'))
     });
 
-    const registrationHandler = (data) => {
-        console.log({ data });
-        navigate('/otp');
+    const registrationHandler = (values) => {
+        const data = {
+            name: values.fullName,
+            phoneNumber: values.phone,
+            studentID: values.stdId,
+            email: values.email,
+            password: values.password,
+            type: values.type
+        };
+        dispatch(userRegistration(data, navigate));
     }
 
     return (
@@ -79,8 +90,8 @@ const RegistrationForm = () => {
                             <Col xs='12' lg='4'>
                                 <label htmlFor='type' className="form-label">{t('type')}</label>
                                 <Field as="select" className="form-select mb-3" defaultValue="borrower" name="type">
-                                    <option value="borrower">{t('borrower')}</option>
-                                    <option value="lender">{t('lender')}</option>
+                                    <option value="BORROWER">{t('borrower')}</option>
+                                    <option value="LENDER">{t('lender')}</option>
                                 </Field>
                                 <ErrorMessage component='small' name='type' className='text-danger fw-bold' />
                             </Col>

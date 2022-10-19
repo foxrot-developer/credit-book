@@ -25,7 +25,7 @@ const LoginForm = () => {
 
     const loginHandler = (data) => {
         console.log({ data });
-        navigate('/dashboard/admin');
+        navigate('/dashboard/borrower');
     }
 
     return (
