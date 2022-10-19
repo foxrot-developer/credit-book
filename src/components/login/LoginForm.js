@@ -4,11 +4,15 @@ import { Formik, Form } from 'formik';
 import { Button } from 'react-bootstrap';
 import { useTranslation } from "react-i18next";
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import TextField from '../../shared/TextField';
 import '../../assets/css/login-form.css';
+import { userLogin } from '../../store/user/actions/actionCreators';
 
 const LoginForm = () => {
+
+    const dispatch = useDispatch();
 
     const { t } = useTranslation();
     const navigate = useNavigate();
@@ -23,9 +27,13 @@ const LoginForm = () => {
         password: Yup.string().required(t('password_error'))
     });
 
-    const loginHandler = (data) => {
-        console.log({ data });
-        navigate('/dashboard/borrower');
+    const loginHandler = (values) => {
+        const data = {
+            email: values.email,
+            password: values.password
+        }
+        dispatch(userLogin(data, navigate));
+        // navigate('/dashboard/borrower');
     }
 
     return (

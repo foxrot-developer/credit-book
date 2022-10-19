@@ -1,13 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Table, Row, Col, Form, Button } from 'react-bootstrap';
 import { Zoom } from "react-awesome-reveal";
 import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from 'react-redux';
 
 import '../../../assets/css/users-table.css';
+import { getAllUsers } from '../../../store/StoreIndex';
 
 const UsersTable = () => {
 
+    const dispatch = useDispatch();
     const { t } = useTranslation();
+
+    const allUsers = useSelector(state => state.user.allUsers);
+
+    useEffect(() => {
+        dispatch(getAllUsers());
+    }, []);
 
     return (
         <Zoom>
@@ -15,14 +24,14 @@ const UsersTable = () => {
                 <Col>
                     <h4 className='fw-bold'>{t('users_text')}</h4>
                 </Col>
-                <Col xs='12' lg='5' className='mb-3'>
+                {/**<Col xs='12' lg='5' className='mb-3'>
                     <Form className='d-flex'>
                         <Form.Control type="text" placeholder={t('search_user')} className='me-2' />
                         <Button type="submit" className='custom-btn'>
                             {t('search_text')}
                         </Button>
                     </Form>
-                </Col>
+    </Col>**/}
                 <Col>
                     <Table className='table-main' striped bordered hover responsive>
                         <thead>
@@ -38,21 +47,23 @@ const UsersTable = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>John</td>
-                                <td>123123</td>
-                                <td>STD123</td>
-                                <td>1234567890</td>
-                                <td>Level 1</td>
-                                <td>john@gmail.com</td>
-                                <td>Lender</td>
-                                <td>
-                                    <div className='d-flex align-items-center justify-content-start'>
-                                        <p className='me-2 text-success fw-bold action'>Block</p>
-                                        <p className='text-danger fw-bold action'>Unblock</p>
-                                    </div>
-                                </td>
-                            </tr>
+                            {allUsers && allUsers.map((user, index) => (
+                                <tr>
+                                    <td>{user.name}</td>
+                                    <td>{user.phoneNumber}</td>
+                                    <td>{user.studentID}</td>
+                                    <td>1234567890</td>
+                                    <td>Level 1</td>
+                                    <td>{user.email}</td>
+                                    <td>{user.type}</td>
+                                    <td>
+                                        <div className='d-flex align-items-center justify-content-start'>
+                                            <p className='me-2 text-warning fw-bold action'>Update</p>
+                                            <p className='text-danger fw-bold action'>Delete</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            ))}
                         </tbody>
                     </Table>
                 </Col>

@@ -2,10 +2,13 @@ import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { Fade } from "react-awesome-reveal";
 import { useTranslation } from "react-i18next";
+import { useLocation } from 'react-router-dom';
 
 import OtpForm from '../components/otp/OtpForm';
 
 const Otp = () => {
+
+    const { state } = useLocation();
 
     const { t, i18n } = useTranslation();
 
@@ -31,7 +34,7 @@ const Otp = () => {
                                             <p className='switch-lang' onClick={localStorage.getItem("lang") === 'en' ? () => changeLanguage('ar') : () => changeLanguage('en')}>{t('switch_lng')}</p>
                                         </div>
                                         <h4 className='text-center fs-5 fw-bold mb-4'>OTP</h4>
-                                        <OtpForm />
+                                        <OtpForm email={state.email} />
                                     </div>
                                 </div>
                             </Col>

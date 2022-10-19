@@ -3,10 +3,16 @@ import * as Yup from 'yup';
 import { Formik, Form } from 'formik';
 import { Button } from 'react-bootstrap';
 import { useTranslation } from "react-i18next";
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import TextField from '../../shared/TextField';
+import { userOtp } from '../../store/StoreIndex';
 
-const OtpForm = () => {
+const OtpForm = ({ email }) => {
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const { t } = useTranslation();
 
@@ -15,11 +21,15 @@ const OtpForm = () => {
     };
 
     const errorSchema = Yup.object().shape({
-        otp: Yup.string().email().required(t('otp_error'))
+        otp: Yup.string().required(t('otp_error'))
     });
 
-    const loginHandler = (data) => {
-        console.log({ data });
+    const loginHandler = (values) => {
+        const data = {
+            otp: values.otp,
+            email: email
+        };
+        dispatch(userOtp(data, navigate));
     }
 
     return (

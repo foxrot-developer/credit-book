@@ -3,18 +3,64 @@ import Axios from '../../../axios/Axios';
 import Toast from '../../../shared/Toast';
 
 export const userRegistration = (data, navigate) => dispatch => {
-    const config = {
-        headers: {
-            "Content-Type": "application/json"
-        }
-    };
-    Axios.post('loan-api/auth/register', data, config)
+    Axios.post('loan-api/auth/register', data)
         .then(response => {
-            navigate('/otp');
+            navigate('/otp', {
+                state: {
+                    email: data.email
+                }
+            });
             Toast.success('Enter OTP');
         })
         .catch(error => {
             console.log({ error });
+            Toast.error(error.message);
+        });
+};
+
+export const userOtp = (data, navigate) => dispatch => {
+    Axios.post('loan-api/auth/verify-otp', data)
+        .then(response => {
+            navigate('/');
+            Toast.success(response.data.message);
+        })
+        .catch(error => {
+            console.log({ error });
+            Toast.error(error.message);
+        });
+};
+
+export const userLogin = (data, navigate) => dispatch => {
+    Axios.post('loan-api/auth/login', data)
+        .then(response => {
+            dispatch({
+                type: actionTypes.LOGIN_USER,
+                payload: response.data.data
+            });
+            if (response.data.data.type === "BORROWER") {
+                navigate('/dashboard/borrower');
+            }
+            else if (response.data.data.type === "ADMIN") {
+                navigate('/dashboard/admin');
+            }
+            Toast.success(response.data.message);
+        })
+        .catch(error => {
+            console.log(error.message);
+            Toast.error(error.message);
+        });
+};
+
+export const getAllUsers = () => dispatch => {
+    Axios.get('loan-api/user')
+        .then(response => {
+            dispatch({
+                type: actionTypes.ALL_USERS,
+                payload: response.data.data
+            });
+        })
+        .catch(error => {
+            console.log(error.message);
             Toast.error(error.message);
         });
 };
