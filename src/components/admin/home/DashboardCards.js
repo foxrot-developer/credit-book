@@ -8,7 +8,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from 'react-redux';
 
 import '../../../assets/css/dashboard-cards.css';
-import { getAllUsers, getAllRequests } from '../../../store/StoreIndex';
+import { getAllUsers, getAllRequests, getPendingRequests } from '../../../store/StoreIndex';
 
 const DashboardCards = () => {
 
@@ -17,10 +17,12 @@ const DashboardCards = () => {
 
     const allUsers = useSelector(state => state.admin.allUsers);
     const allRequests = useSelector(state => state.admin.allRequests);
+    const allPendingRequests = useSelector(state => state.admin.allPendingRequests);
 
     useEffect(() => {
         dispatch(getAllUsers());
         dispatch(getAllRequests());
+        dispatch(getPendingRequests());
     }, []);
 
     return (
@@ -91,12 +93,12 @@ const DashboardCards = () => {
                             </Col>
                         </Row>
                         <Row className='my-2'>
-                            {allRequests.length && <React.Fragment>
+                            {allPendingRequests.length && <React.Fragment>
                                 <Col className='d-flex align-items-center justify-content-start'>
-                                    <FaUserFriends className='card-icon' /> <p className='card-text'>{`Borrower Id: ${allRequests[0].borrowerID}`}</p>
+                                    <FaUserFriends className='card-icon' /> <p className='card-text'>{`Borrower Id: ${allPendingRequests[allPendingRequests.length - 1].borrowerID}`}</p>
                                 </Col>
                                 <Col className='d-flex align-items-center justify-content-end'>
-                                    <p className='card-total'>{`$${allRequests[0].amount}`}</p>
+                                    <p className='card-total'>{`$${allPendingRequests[allPendingRequests.length - 1].amount}`}</p>
                                 </Col>
                             </React.Fragment>}
                         </Row>
