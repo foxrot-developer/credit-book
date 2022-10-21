@@ -12,7 +12,6 @@ Axios.interceptors.request.use((request) => {
 Axios.interceptors.response.use(
     (response) => {
         document.querySelector(".loading-bg").style.display = "none";
-
         return response;
     },
     (error) => {
