@@ -13,14 +13,14 @@ const LendingRequestsTable = () => {
                 <Col>
                     <h4 className='fw-bold'>{t('lending_text')}</h4>
                 </Col>
-                <Col xs='12' lg='5' className='mb-3'>
+                {/**<Col xs='12' lg='5' className='mb-3'>
                     <Form className='d-flex'>
                         <Form.Control type="text" placeholder={t('search_user')} className='me-2' />
                         <Button type="submit" className='custom-btn'>
                             {t('search_text')}
                         </Button>
                     </Form>
-                </Col>
+    </Col>**/}
                 <Col>
                     <Table className='table-main' striped bordered hover responsive>
                         <thead>

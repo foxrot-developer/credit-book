@@ -5,14 +5,21 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from 'react-redux';
 
 import '../../../assets/css/users-table.css';
-import { getAllUsers } from '../../../store/StoreIndex';
+import { getAllUsers, deleteUser, updateUser } from '../../../store/StoreIndex';
 
 const UsersTable = () => {
 
     const dispatch = useDispatch();
     const { t } = useTranslation();
 
-    const allUsers = useSelector(state => state.user.allUsers);
+    const allUsers = useSelector(state => state.admin.allUsers);
+
+    const statusHandler = (id, status) => {
+        const data = {
+            status
+        };
+        dispatch(updateUser(data, id));
+    };
 
     useEffect(() => {
         dispatch(getAllUsers());
@@ -43,12 +50,13 @@ const UsersTable = () => {
                                 <th>{t('current_text')}</th>
                                 <th>{t('email')}</th>
                                 <th>{t('type_text')}</th>
+                                <th>Status</th>
                                 <th>{t('actions_text')}</th>
                             </tr>
                         </thead>
                         <tbody>
                             {allUsers && allUsers.map((user, index) => (
-                                <tr>
+                                <tr key={index}>
                                     <td>{user.name}</td>
                                     <td>{user.phoneNumber}</td>
                                     <td>{user.studentID}</td>
@@ -56,10 +64,11 @@ const UsersTable = () => {
                                     <td>Level 1</td>
                                     <td>{user.email}</td>
                                     <td>{user.type}</td>
+                                    <td>{user.status}</td>
                                     <td>
                                         <div className='d-flex align-items-center justify-content-start'>
-                                            <p className='me-2 text-warning fw-bold action'>Update</p>
-                                            <p className='text-danger fw-bold action'>Delete</p>
+                                            <p className='me-2 text-danger fw-bold action' onClick={() => dispatch(deleteUser(user.id))}>Delete</p>
+                                            {user.status === "ACTIVE" ? <p className='text-warning fw-bold action' onClick={() => { statusHandler(user.id, "INACTIVE") }}>Block</p> : <p className='text-success fw-bold action' onClick={() => { statusHandler(user.id, "ACTIVE") }}>Unblock</p>}
                                         </div>
                                     </td>
                                 </tr>

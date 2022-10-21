@@ -1,16 +1,27 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { FaUserFriends } from 'react-icons/fa';
 import { RiMoneyDollarCircleFill } from 'react-icons/ri';
 import { IoMdCash } from 'react-icons/io';
 import { Zoom } from "react-awesome-reveal";
 import { useTranslation } from "react-i18next";
+import { useDispatch, useSelector } from 'react-redux';
 
 import '../../../assets/css/dashboard-cards.css';
+import { getAllUsers, getAllRequests } from '../../../store/StoreIndex';
 
 const DashboardCards = () => {
 
+    const dispatch = useDispatch();
     const { t } = useTranslation();
+
+    const allUsers = useSelector(state => state.admin.allUsers);
+    const allRequests = useSelector(state => state.admin.allRequests);
+
+    useEffect(() => {
+        dispatch(getAllUsers());
+        dispatch(getAllRequests());
+    }, []);
 
     return (
         <Row>
@@ -19,7 +30,7 @@ const DashboardCards = () => {
                     <div className='card-main'>
                         <Row className='my-2'>
                             <Col className='d-flex align-items-center justify-content-start'>
-                                <FaUserFriends className='card-icon' /> <p className='card-text'>120</p>
+                                <FaUserFriends className='card-icon' /> <p className='card-text'>{allUsers ? allUsers.length : 0}</p>
                             </Col>
                             <Col className='d-flex align-items-center justify-content-end'>
                                 <p className='card-total'>{t('total_users')}</p>
@@ -35,7 +46,7 @@ const DashboardCards = () => {
                         </Row>
                         <Row className='my-2'>
                             <Col className='d-flex align-items-center justify-content-start'>
-                                <IoMdCash className='card-icon' /> <p className='card-text'>70</p>
+                                <IoMdCash className='card-icon' /> <p className='card-text'>{allRequests ? allRequests.length : 0}</p>
                             </Col>
                             <Col className='d-flex align-items-center justify-content-end'>
                                 <p className='card-total'>{t('borrowing_text')}</p>
@@ -80,20 +91,14 @@ const DashboardCards = () => {
                             </Col>
                         </Row>
                         <Row className='my-2'>
-                            <Col className='d-flex align-items-center justify-content-start'>
-                                <FaUserFriends className='card-icon' /> <p className='card-text'>John</p>
-                            </Col>
-                            <Col className='d-flex align-items-center justify-content-end'>
-                                <p className='card-total'>$20</p>
-                            </Col>
-                        </Row>
-                        <Row className='my-2'>
-                            <Col className='d-flex align-items-center justify-content-start'>
-                                <FaUserFriends className='card-icon' /> <p className='card-text'>John</p>
-                            </Col>
-                            <Col className='d-flex align-items-center justify-content-end'>
-                                <p className='card-total'>$20</p>
-                            </Col>
+                            {allRequests && <React.Fragment>
+                                <Col className='d-flex align-items-center justify-content-start'>
+                                    <FaUserFriends className='card-icon' /> <p className='card-text'>{`Borrower Id: ${allRequests[0].borrowerID}`}</p>
+                                </Col>
+                                <Col className='d-flex align-items-center justify-content-end'>
+                                    <p className='card-total'>{`$${allRequests[0].amount}`}</p>
+                                </Col>
+                            </React.Fragment>}
                         </Row>
                     </div>
                 </Zoom>

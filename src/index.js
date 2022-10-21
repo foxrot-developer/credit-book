@@ -11,11 +11,13 @@ import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 
 import UserReducer from './store/user/reducers/UserReducer';
+import AdminReducer from './store/admin/reducers/AdminReducer';
 
 const { persistStore, persistReducer } = require('redux-persist');
 
 const rootReducer = combineReducers({
-  user: UserReducer
+  user: UserReducer,
+  admin: AdminReducer
 });
 
 let devtools, store;

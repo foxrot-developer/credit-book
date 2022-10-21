@@ -2,6 +2,8 @@ import * as actionTypes from './actionTypes';
 import Axios from '../../../axios/Axios';
 import Toast from '../../../shared/Toast';
 
+// User Requests
+
 export const userRegistration = (data, navigate) => dispatch => {
     Axios.post('loan-api/auth/register', data)
         .then(response => {
@@ -44,20 +46,6 @@ export const userLogin = (data, navigate) => dispatch => {
                 navigate('/dashboard/admin');
             }
             Toast.success(response.data.message);
-        })
-        .catch(error => {
-            console.log(error.message);
-            Toast.error(error.message);
-        });
-};
-
-export const getAllUsers = () => dispatch => {
-    Axios.get('loan-api/user')
-        .then(response => {
-            dispatch({
-                type: actionTypes.ALL_USERS,
-                payload: response.data.data
-            });
         })
         .catch(error => {
             console.log(error.message);

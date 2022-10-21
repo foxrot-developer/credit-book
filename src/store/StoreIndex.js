@@ -1,6 +1,14 @@
 export {
     userRegistration,
     userLogin,
-    userOtp,
-    getAllUsers
+    userOtp
 } from './user/actions/actionCreators';
+
+export {
+    getAllUsers,
+    deleteUser,
+    updateUser,
+    getAllRequests,
+    updateRequestStatus,
+    getPendingRequests
+} from './admin/actions/actionCreators';
