@@ -52,3 +52,11 @@ export const userLogin = (data, navigate) => dispatch => {
             Toast.error(error.message);
         });
 };
+
+export const userLogout = (navigate) => dispatch => {
+    dispatch({
+        type: actionTypes.LOGOUT_USER
+    });
+    navigate('/');
+    Toast.success('User logout successful');
+};

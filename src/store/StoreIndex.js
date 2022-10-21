@@ -1,7 +1,8 @@
 export {
     userRegistration,
     userLogin,
-    userOtp
+    userOtp,
+    userLogout
 } from './user/actions/actionCreators';
 
 export {
@@ -10,5 +11,7 @@ export {
     updateUser,
     getAllRequests,
     updateRequestStatus,
-    getPendingRequests
+    getPendingRequests,
+    getAllWallets,
+    adminLogout
 } from './admin/actions/actionCreators';

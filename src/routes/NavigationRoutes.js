@@ -7,6 +7,7 @@ import Otp from '../pages/Otp';
 import Users from '../pages/admin/Users';
 import LendingRequests from '../pages/admin/LendingRequests';
 import BorrowingRequests from '../pages/admin/BorrowingRequests';
+import Wallet from '../pages/admin/Wallet';
 
 import BorrowerHome from '../pages/borrower/BorrowerHome';
 import BorrowerRequest from '../pages/borrower/BorrowerRequest';
@@ -21,6 +22,7 @@ const NavigationRoutes = () => {
             <Route exact path='/dashboard/admin/users' element={<Users />}></Route>
             <Route exact path='/dashboard/admin/lending-requests' element={<LendingRequests />}></Route>
             <Route exact path='/dashboard/admin/borrowing-requests' element={<BorrowingRequests />}></Route>
+            <Route exact path='/dashboard/admin/wallets' element={<Wallet />}></Route>
             <Route exact path='/register' element={<Registration />}></Route>
             <Route exact path='/otp' element={<Otp />}></Route>
 

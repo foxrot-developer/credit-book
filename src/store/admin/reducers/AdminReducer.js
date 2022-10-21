@@ -3,7 +3,8 @@ import * as actionTypes from '../actions/actionTypes';
 const initialState = {
     allUsers: [],
     allRequests: [],
-    allPendingRequests: []
+    allPendingRequests: [],
+    allWallets: []
 };
 
 const AdminReducer = (state = initialState, action) => {
@@ -22,6 +23,18 @@ const AdminReducer = (state = initialState, action) => {
             return {
                 ...state,
                 allPendingRequests: action.payload
+            };
+        case actionTypes.ALL_WALLETS:
+            return {
+                ...state,
+                allWallets: action.payload
+            };
+        case actionTypes.ADMIN_LOGOUT:
+            return {
+                allUsers: [],
+                allRequests: [],
+                allPendingRequests: [],
+                allWallets: []
             };
         default:
             return state;

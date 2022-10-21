@@ -29,7 +29,6 @@ export const deleteUser = userId => dispatch => {
 };
 
 export const updateUser = (data, userId) => dispatch => {
-    console.log({ data, userId });
     Axios.patch(`loan-api/user/${userId}`, data)
         .then(response => {
             dispatch(getAllUsers());
@@ -39,6 +38,12 @@ export const updateUser = (data, userId) => dispatch => {
             console.log(error.message);
             Toast.error(error.message);
         });
+};
+
+export const adminLogout = () => dispatch => {
+    dispatch({
+        type: actionTypes.ADMIN_LOGOUT
+    });
 };
 
 // Money Requests
@@ -75,6 +80,7 @@ export const addMoneyRequest = data => dispatch => {
     Axios.post('loan-api/request', data)
         .then(response => {
             dispatch(getAllRequests());
+            dispatch(getPendingRequests());
         })
         .catch(error => {
             console.log(error.message);
@@ -86,6 +92,23 @@ export const updateRequestStatus = (data, id) => dispatch => {
     Axios.patch(`loan-api/request/${id}`, data)
         .then(response => {
             dispatch(getAllRequests());
+            dispatch(getPendingRequests());
+        })
+        .catch(error => {
+            console.log(error.message);
+            Toast.error(error.message);
+        });
+};
+
+
+// Wallet Requests
+export const getAllWallets = () => dispatch => {
+    Axios.get('loan-api/wallet')
+        .then(response => {
+            dispatch({
+                type: actionTypes.ALL_WALLETS,
+                payload: response.data.data
+            });
         })
         .catch(error => {
             console.log(error.message);

@@ -91,7 +91,7 @@ const DashboardCards = () => {
                             </Col>
                         </Row>
                         <Row className='my-2'>
-                            {allRequests && <React.Fragment>
+                            {allRequests.length && <React.Fragment>
                                 <Col className='d-flex align-items-center justify-content-start'>
                                     <FaUserFriends className='card-icon' /> <p className='card-text'>{`Borrower Id: ${allRequests[0].borrowerID}`}</p>
                                 </Col>

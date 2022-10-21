@@ -46,7 +46,9 @@ const RegistrationForm = () => {
             studentID: values.stdId,
             email: values.email,
             password: values.password,
-            type: values.type
+            type: values.type,
+            currentLevel: values.level,
+            nationalID: values.national
         };
         dispatch(userRegistration(data, navigate));
     }

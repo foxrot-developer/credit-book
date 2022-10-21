@@ -3,16 +3,22 @@ import { useTranslation } from "react-i18next";
 import { Sidebar, Menu, MenuItem, useProSidebar } from 'react-pro-sidebar';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { FaUserFriends } from 'react-icons/fa';
-import { RiMoneyDollarCircleFill } from 'react-icons/ri';
+import { RiMoneyDollarCircleFill, RiLogoutBoxRFill } from 'react-icons/ri';
 import { IoMdCash } from 'react-icons/io';
 import { AiFillDashboard } from 'react-icons/ai';
+import { BsFillWalletFill } from 'react-icons/bs';
 import { NavLink } from 'react-router-dom';
 import { Col, Container, Row } from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import LendingRequestsTable from '../../components/admin/lending-requests/LendingRequestsTable';
+import { userLogout, adminLogout } from '../../store/StoreIndex';
 
 const LendingRequests = () => {
 
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const { t, i18n } = useTranslation();
 
     const changeLanguage = (lang) => {
@@ -23,6 +29,11 @@ const LendingRequests = () => {
 
     const { collapseSidebar } = useProSidebar();
 
+    const LogoutHandler = () => {
+        dispatch(adminLogout());
+        dispatch(userLogout(navigate));
+    };
+
     return (
         <div style={{ display: 'flex', height: '100vh', width: '100%', border: '10px' }}>
             <Sidebar collapsedWidth='70px' defaultCollapsed className='sidebar-container'>
@@ -31,6 +42,8 @@ const LendingRequests = () => {
                     <NavLink to='/dashboard/admin/users' className='menu-item-link'><MenuItem><FaUserFriends className='menu-icon' /> {t('users_text')}</MenuItem></NavLink>
                     <NavLink to='/dashboard/admin/lending-requests' className='menu-item-link'><MenuItem><RiMoneyDollarCircleFill className='menu-icon' /> {t('lending_text')}</MenuItem></NavLink>
                     <NavLink to='/dashboard/admin/borrowing-requests' className='menu-item-link'><MenuItem><IoMdCash className='menu-icon' /> {t('borrowing_text')}</MenuItem></NavLink>
+                    <NavLink to='/dashboard/admin/wallets' className='menu-item-link'><MenuItem><BsFillWalletFill className='menu-icon' />Wallet</MenuItem></NavLink>
+                    <div className='menu-item-link' onClick={LogoutHandler}><MenuItem><RiLogoutBoxRFill className='menu-icon' />Logout</MenuItem></div>
                 </Menu>
             </Sidebar>
             <main className='w-100 page-main'>

@@ -12,10 +12,10 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-import UsersTable from '../../components/admin/users/UsersTable';
+import WalletsTable from '../../components/admin/wallet/WalletsTable';
 import { userLogout, adminLogout } from '../../store/StoreIndex';
 
-const Users = () => {
+const Wallet = () => {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -57,11 +57,11 @@ const Users = () => {
                             <p className='switch-lang p-0' onClick={localStorage.getItem("lang") === 'en' ? () => changeLanguage('ar') : () => changeLanguage('en')}>{t('switch_lng')}</p>
                         </Col>
                     </Row>
-                    <UsersTable />
+                    <WalletsTable />
                 </Container>
             </main>
         </div>
     )
 }
 
-export default Users;
+export default Wallet;
