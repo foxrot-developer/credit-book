@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import { Table, Row, Col, Form, Button } from 'react-bootstrap';
+import { Table, Row, Col, Button } from 'react-bootstrap';
 import { Zoom } from "react-awesome-reveal";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getAllRequests, updateRequestStatus, getPendingRequests } from '../../../store/StoreIndex';
+import { getAllRequests, updateRequestStatus, getPendingRequests, getInitiatedRequests, createInvoice } from '../../../store/StoreIndex';
 
 const BorrowingRequestsTable = () => {
 
     const { t } = useTranslation();
     const dispatch = useDispatch();
 
-    const [allReqs, setAllReqs] = useState(true);
+    const [allReqs, setAllReqs] = useState('all');
 
     const allRequests = useSelector(state => state.admin.allRequests);
     const allPendingRequests = useSelector(state => state.admin.allPendingRequests);
+    const allInitiatedRequests = useSelector(state => state.admin.allInitiatedRequests);
 
     const updateRequestHandler = (status, id) => {
         const data = {
@@ -24,9 +25,20 @@ const BorrowingRequestsTable = () => {
         dispatch(updateRequestStatus(data, id));
     };
 
+    const invoiceHandler = (amount, id) => {
+        const data = {
+            amount: +amount,
+            currency: "SAR",
+            description: "kindle paperwhite"
+        };
+
+        dispatch(createInvoice(data, id));
+    };
+
     useEffect(() => {
         dispatch(getAllRequests());
         dispatch(getPendingRequests());
+        dispatch(getInitiatedRequests());
     }, []);
 
     return (
@@ -44,11 +56,12 @@ const BorrowingRequestsTable = () => {
                     </Form>
     </Col>**/}
                 <Col className='my-2'>
-                    <Button className='px-5 me-3 text-light btn custom-btn' onClick={() => setAllReqs(true)}>All Requests</Button>
-                    <Button className='px-5 text-light btn custom-btn' onClick={() => setAllReqs(false)}>Pending Requests</Button>
+                    <Button className='px-5 me-3 text-light btn custom-btn' onClick={() => setAllReqs('all')}>All Requests</Button>
+                    <Button className='px-5 me-3 text-light btn custom-btn' onClick={() => setAllReqs('pending')}>Pending Requests</Button>
+                    <Button className='px-5 text-light btn custom-btn' onClick={() => setAllReqs('initiated')}>Initiated Requests</Button>
                 </Col>
                 <Col>
-                    {allReqs && <Table className='table-main' striped bordered hover responsive>
+                    {allReqs === 'all' && <Table className='table-main' striped bordered hover responsive>
                         <thead>
                             <tr>
                                 <th>Borrower Id</th>
@@ -75,7 +88,8 @@ const BorrowingRequestsTable = () => {
                             ))}
                         </tbody>
                     </Table>}
-                    {!allReqs && <Table className='table-main' striped bordered hover responsive>
+
+                    {allReqs === 'pending' && <Table className='table-main' striped bordered hover responsive>
                         <thead>
                             <tr>
                                 <th>Borrower Id</th>
@@ -103,6 +117,30 @@ const BorrowingRequestsTable = () => {
                         </tbody>
                     </Table>}
 
+                    {allReqs === 'initiated' && <Table className='table-main' striped bordered hover responsive>
+                        <thead>
+                            <tr>
+                                <th>Borrower Id</th>
+                                <th>Lender Id</th>
+                                <th>{t('borrowing_amount_text')}</th>
+                                <th>Status</th>
+                                <th>{t('actions_text')}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {allInitiatedRequests && allInitiatedRequests.map((request, index) => (
+                                <tr key={index}>
+                                    <td>{request.borrowerID}</td>
+                                    <td>{request.lenderID}</td>
+                                    <td>{`$${request.amount}`}</td>
+                                    <td>{request.status}</td>
+                                    <td>
+                                        <p className='me-2 text-success fw-bold action' onClick={() => invoiceHandler(request.amount, request.id)}>Create Invoice</p>
+                                    </td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </Table>}
                 </Col>
             </Row>
         </Zoom>

@@ -12,6 +12,9 @@ import Wallet from '../pages/admin/Wallet';
 import BorrowerHome from '../pages/borrower/BorrowerHome';
 import BorrowerRequest from '../pages/borrower/BorrowerRequest';
 
+import LenderHome from '../pages/lender/LenderHome';
+import LenderRequest from '../pages/lender/LenderRequest';
+
 const NavigationRoutes = () => {
 
     return (
@@ -29,6 +32,10 @@ const NavigationRoutes = () => {
             {/** Borrower */}
             <Route exact path='/dashboard/borrower' element={<BorrowerHome />}></Route>
             <Route exact path='/dashboard/borrower/borrowing-requests' element={<BorrowerRequest />}></Route>
+            
+            {/** Lender */}
+            <Route exact path='/dashboard/lender' element={<LenderHome />}></Route>
+            <Route exact path='/dashboard/borrower/lending-requests' element={<LenderRequest />}></Route>
 
             <Route
                 path="*"

@@ -1,41 +1,52 @@
-import React from 'react';
-import { Table, Row, Col, Form, Button } from 'react-bootstrap';
+import React, { useEffect } from 'react';
+import { Table, Row, Col, Button } from 'react-bootstrap';
 import { Zoom } from "react-awesome-reveal";
 import { useTranslation } from "react-i18next";
+import { useSelector, useDispatch } from 'react-redux';
+
+import NewRequestModal from './NewRequestModal';
+import { allBorrowerRequests } from '../../../store/StoreIndex';
 
 const BorrowerRequestsTable = () => {
+    const dispatch = useDispatch();
     const { t } = useTranslation();
+
+    const user = useSelector(state => state.user.user);
+    const allRequests = useSelector(state => state.borrower.allRequests);
+
+    const [modalShow, setModalShow] = React.useState(false);
+
+    useEffect(() => {
+        dispatch(allBorrowerRequests(user.id));
+    }, []);
 
     return (
         <Zoom>
             <Row className='my-5 d-flex flex-column'>
-                <Col>
+                <Col className='d-flex align-items-center justify-content-between mb-3'>
                     <h4 className='fw-bold'>{t('borrowing_text')}</h4>
+                    <Button className='px-5 text-light btn custom-btn' onClick={() => setModalShow(true)}>
+                        ADD NEW REQUEST
+                    </Button>
+                    <NewRequestModal show={modalShow} onHide={() => setModalShow(false)} />
                 </Col>
                 <Col>
                     <Table className='table-main' striped bordered hover responsive>
                         <thead>
                             <tr>
-                                <th>{t('full_name_text')}</th>
-                                <th>{t('phone_text')}</th>
-                                <th>{t('email')}</th>
-                                <th>{t('borrowing_amount_text')}</th>
+                                <th>Amount</th>
                                 <th>Status</th>
+                                <th>Lender Id</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>John</td>
-                                <td>1234567890</td>
-                                <td>john@gmail.com</td>
-                                <td>$30</td>
-                                <td>
-                                    <div className='d-flex align-items-center justify-content-start'>
-                                        <p className='me-2 text-success fw-bold'>Approve</p>
-                                        <p className='text-danger fw-bold'>Reject</p>
-                                    </div>
-                                </td>
-                            </tr>
+                            {allRequests && allRequests.map((request, index) => (
+                                <tr key={index}>
+                                    <td>{`$${request.amount}`}</td>
+                                    <td>{request.status}</td>
+                                    <td>{request.lenderID}</td>
+                                </tr>
+                            ))}
                         </tbody>
                     </Table>
                 </Col>

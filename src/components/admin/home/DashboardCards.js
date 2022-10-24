@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { FaUserFriends } from 'react-icons/fa';
-import { RiMoneyDollarCircleFill } from 'react-icons/ri';
 import { IoMdCash } from 'react-icons/io';
 import { Zoom } from "react-awesome-reveal";
 import { useTranslation } from "react-i18next";
@@ -36,14 +35,6 @@ const DashboardCards = () => {
                             </Col>
                             <Col className='d-flex align-items-center justify-content-end'>
                                 <p className='card-total'>{t('total_users')}</p>
-                            </Col>
-                        </Row>
-                        <Row className='my-2'>
-                            <Col className='d-flex align-items-center justify-content-start'>
-                                <RiMoneyDollarCircleFill className='card-icon' /> <p className='card-text'>100</p>
-                            </Col>
-                            <Col className='d-flex align-items-center justify-content-end'>
-                                <p className='card-total'>{t('lending_text')}</p>
                             </Col>
                         </Row>
                         <Row className='my-2'>

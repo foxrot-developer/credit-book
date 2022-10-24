@@ -4,6 +4,7 @@ const initialState = {
     allUsers: [],
     allRequests: [],
     allPendingRequests: [],
+    allInitiatedRequests: [],
     allWallets: []
 };
 
@@ -24,6 +25,11 @@ const AdminReducer = (state = initialState, action) => {
                 ...state,
                 allPendingRequests: action.payload
             };
+        case actionTypes.ALL_INITIATED_REQUESTS:
+            return {
+                ...state,
+                allInitiatedRequests: action.payload
+            };
         case actionTypes.ALL_WALLETS:
             return {
                 ...state,
@@ -34,6 +40,7 @@ const AdminReducer = (state = initialState, action) => {
                 allUsers: [],
                 allRequests: [],
                 allPendingRequests: [],
+                allInitiatedRequests: [],
                 allWallets: []
             };
         default:

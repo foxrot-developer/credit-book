@@ -12,12 +12,16 @@ import thunk from 'redux-thunk';
 
 import UserReducer from './store/user/reducers/UserReducer';
 import AdminReducer from './store/admin/reducers/AdminReducer';
+import BorrowerReducer from './store/borrower/reducers/BorrowerReducer';
+import LenderReducer from './store/lender/reducers/LenderReducer';
 
 const { persistStore, persistReducer } = require('redux-persist');
 
 const rootReducer = combineReducers({
   user: UserReducer,
-  admin: AdminReducer
+  admin: AdminReducer,
+  borrower: BorrowerReducer,
+  lender: LenderReducer
 });
 
 let devtools, store;

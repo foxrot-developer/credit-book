@@ -45,6 +45,9 @@ export const userLogin = (data, navigate) => dispatch => {
             else if (response.data.data.type === "ADMIN") {
                 navigate('/dashboard/admin');
             }
+            else if (response.data.data.type === "LENDER") {
+                navigate('/dashboard/lender');
+            }
             Toast.success(response.data.message);
         })
         .catch(error => {
