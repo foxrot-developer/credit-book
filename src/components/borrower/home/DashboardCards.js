@@ -73,7 +73,7 @@ const DashboardCards = () => {
                         </Row>
                         <Row className='my-2'>
                             <Col className='d-flex align-items-center justify-content-start'>
-                                <BsFillWalletFill className='card-icon' /> <p className='card-text'>{totalRating ? `$${wallet}` : `$0`}</p>
+                                <BsFillWalletFill className='card-icon' /> <p className='card-text'>{wallet ? `$${wallet}` : `$0`}</p>
                             </Col>
                             <Col className='d-flex align-items-center justify-content-end'>
                                 <p className='card-total'>Wallet Amount</p>
