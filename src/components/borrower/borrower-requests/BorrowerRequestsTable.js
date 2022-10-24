@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from 'react-redux';
 
 import NewRequestModal from './NewRequestModal';
-import { allBorrowerRequests } from '../../../store/StoreIndex';
+import { allBorrowerRequests, returnAmount } from '../../../store/StoreIndex';
 
 const BorrowerRequestsTable = () => {
     const dispatch = useDispatch();
@@ -15,6 +15,10 @@ const BorrowerRequestsTable = () => {
     const allRequests = useSelector(state => state.borrower.allRequests);
 
     const [modalShow, setModalShow] = React.useState(false);
+
+    const returnAmountHandler = id => {
+        dispatch(returnAmount(id, user.id));
+    }
 
     useEffect(() => {
         dispatch(allBorrowerRequests(user.id));
@@ -36,7 +40,7 @@ const BorrowerRequestsTable = () => {
                             <tr>
                                 <th>Amount</th>
                                 <th>Status</th>
-                                <th>Lender Id</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -44,7 +48,7 @@ const BorrowerRequestsTable = () => {
                                 <tr key={index}>
                                     <td>{`$${request.amount}`}</td>
                                     <td>{request.status}</td>
-                                    <td>{request.lenderID}</td>
+                                    <td>{request.status === 'BORROWED' && <p className='me-2 text-success fw-bold action' onClick={() => returnAmountHandler(request.id)}>Return</p>}</td>
                                 </tr>
                             ))}
                         </tbody>

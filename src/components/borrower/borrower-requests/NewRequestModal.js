@@ -1,7 +1,7 @@
 import React from 'react';
 import * as Yup from 'yup';
 import { Formik, Form } from 'formik';
-import { Modal, Button, Container, Row, Col } from 'react-bootstrap';
+import { Modal, Button, Container } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 
 import TextField from '../../../shared/TextField';

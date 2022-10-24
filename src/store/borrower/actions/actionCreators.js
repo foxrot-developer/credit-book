@@ -29,6 +29,21 @@ export const addNewRequest = (data) => dispatch => {
         });
 };
 
+export const returnAmount = (id, userId) => dispatch => {
+    const data = {
+        status: "RETURN"
+    };
+    Axios.patch(`loan-api/request/${id}`, data)
+        .then(response => {
+            dispatch(allBorrowerRequests(userId));
+            Toast.success(response.data.message);
+        })
+        .catch(error => {
+            console.log({ error });
+            Toast.error(error.message);
+        });
+};
+
 export const borrowerLogout = (navigate) => dispatch => {
     dispatch({
         type: actionTypes.BORROWER_LOGOUT,

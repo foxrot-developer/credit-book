@@ -4,7 +4,8 @@ import { Zoom } from "react-awesome-reveal";
 import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from 'react-redux';
 
-import { allLenderPendingRequests, lenderAcceptedRequests } from '../../../store/StoreIndex';
+import { allLenderPendingRequests, lenderAcceptedRequests, acceptRequest } from '../../../store/StoreIndex';
+import RatingModal from './RatingModal';
 
 function LenderRequestsTable() {
 
@@ -16,6 +17,22 @@ function LenderRequestsTable() {
     const acceptedRequests = useSelector(state => state.lender.acceptedRequests);
 
     const [pendingReqs, setPendingReqs] = useState('pending');
+    const [modalShow, setModalShow] = React.useState(false);
+    const [borrower_id, setBorrower_id] = React.useState('');
+
+    const modalHandler = (borrower) => {
+        setBorrower_id(borrower);
+        setModalShow(true);
+    };
+
+    const acceptRequestHandler = id => {
+        const data = {
+            lenderID: user.id,
+            status: "INITIATED"
+        }
+
+        dispatch(acceptRequest(data, id));
+    };
 
     useEffect(() => {
         dispatch(allLenderPendingRequests());
@@ -25,6 +42,7 @@ function LenderRequestsTable() {
     return (
         <Zoom>
             <Row className='my-5 d-flex flex-column'>
+                <RatingModal show={modalShow} onHide={() => setModalShow(false)} id={borrower_id} />
                 <Col className='d-flex align-items-center justify-content-between mb-3'>
                     <h4 className='fw-bold'>{t('borrowing_text')}</h4>
                 </Col>
@@ -38,7 +56,6 @@ function LenderRequestsTable() {
                             <tr>
                                 <th>Amount</th>
                                 <th>Status</th>
-                                <th>Borrower Id</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -47,8 +64,7 @@ function LenderRequestsTable() {
                                 <tr key={index}>
                                     <td>{`$${request.amount}`}</td>
                                     <td>{request.status}</td>
-                                    <td>{request.borrowerID}</td>
-                                    <td><p className='text-success fw-bold action'>Accept</p></td>
+                                    <td><p className='text-success fw-bold action' onClick={() => acceptRequestHandler(request.id)}>Accept</p></td>
                                 </tr>
                             ))}
                         </tbody>
@@ -59,7 +75,6 @@ function LenderRequestsTable() {
                             <tr>
                                 <th>Amount</th>
                                 <th>Status</th>
-                                <th>Borrower Id</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -68,7 +83,7 @@ function LenderRequestsTable() {
                                 <tr key={index}>
                                     <td>{`$${request.amount}`}</td>
                                     <td>{request.status}</td>
-                                    <td>{request.borrowerID}</td>
+                                    <td>{request.status === 'COMPLETED' && <p className='me-2 text-success fw-bold action' onClick={() => modalHandler(request.borrowerID)}>Rate</p>}</td>
                                 </tr>
                             ))}
                         </tbody>

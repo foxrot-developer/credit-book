@@ -36,6 +36,7 @@ export const acceptRequest = (data, id) => dispatach => {
     Axios.patch(`loan-api/request/${id}`, data)
         .then(response => {
             dispatach(allLenderPendingRequests());
+            Toast.success(response.data.message);
         })
         .catch(error => {
             console.log({ error });

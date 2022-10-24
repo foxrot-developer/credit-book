@@ -13,18 +13,23 @@ export {
     updateRequestStatus,
     getPendingRequests,
     getInitiatedRequests,
+    getBorrowedRequests,
     createInvoice,
     getAllWallets,
-    adminLogout
+    adminLogout,
+    getReturnRequests,
+    getCompletedRequests
 } from './admin/actions/actionCreators';
 
 export {
     allBorrowerRequests,
-    addNewRequest
+    addNewRequest,
+    returnAmount
 } from './borrower/actions/actionCreators';
 
 export {
     allLenderPendingRequests,
     lenderAcceptedRequests,
-    lenderLogout
+    lenderLogout,
+    acceptRequest
 } from './lender/actions/actionCreators';

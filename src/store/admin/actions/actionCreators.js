@@ -92,6 +92,52 @@ export const getInitiatedRequests = () => dispatch => {
         });
 };
 
+export const getBorrowedRequests = () => dispatch => {
+    Axios.get('loan-api/request/status?status=BORROWED')
+        .then(response => {
+            dispatch({
+                type: actionTypes.ALL_BORROWED_REQUESTS,
+                payload: response.data.data
+            });
+            dispatch(getPendingRequests());
+        })
+        .catch(error => {
+            console.log(error.message);
+            Toast.error(error.message);
+        });
+};
+
+export const getReturnRequests = () => dispatch => {
+    Axios.get('loan-api/request/status?status=RETURN')
+        .then(response => {
+            dispatch({
+                type: actionTypes.ALL_RETURN_REQUESTS,
+                payload: response.data.data
+            });
+            dispatch(getAllRequests());
+        })
+        .catch(error => {
+            console.log(error.message);
+            Toast.error(error.message);
+        });
+};
+
+export const getCompletedRequests = () => dispatch => {
+    Axios.get('loan-api/request/status?status=COMPLETED')
+        .then(response => {
+            dispatch({
+                type: actionTypes.ALL_COMPLETED_REQUESTS,
+                payload: response.data.data
+            });
+            dispatch(getAllRequests());
+            dispatch(getReturnRequests());
+        })
+        .catch(error => {
+            console.log(error.message);
+            Toast.error(error.message);
+        });
+};
+
 export const createInvoice = (data, id) => dispatch => {
     Axios.post('https://api.moyasar.com/v1/invoices', data, {
         auth: {

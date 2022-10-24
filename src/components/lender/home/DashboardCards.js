@@ -1,12 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { FaUserFriends } from 'react-icons/fa';
 import { IoMdCash } from 'react-icons/io';
+import { AiFillStar } from 'react-icons/ai';
+import { BsFillWalletFill } from 'react-icons/bs';
 import { Zoom } from "react-awesome-reveal";
 import { useTranslation } from "react-i18next";
 import { useSelector, useDispatch } from 'react-redux';
 
-import { allLenderPendingRequests } from '../../../store/StoreIndex';
+import { allLenderPendingRequests, lenderAcceptedRequests } from '../../../store/StoreIndex';
+import Axios from '../../../axios/Axios';
 
 const DashboardCards = () => {
     const dispatch = useDispatch();
@@ -14,11 +17,31 @@ const DashboardCards = () => {
 
     const user = useSelector(state => state.user.user);
     const allRequests = useSelector(state => state.lender.allRequests);
+    const acceptedRequests = useSelector(state => state.lender.acceptedRequests);
+
+    const [totalRating, setTotalRating] = useState(0);
+    const [wallet, setWallet] = useState(0);
 
     const pendingRequests = allRequests && allRequests.filter(request => request.status === 'APPROVED');
 
     useEffect(() => {
         dispatch(allLenderPendingRequests());
+        dispatch(lenderAcceptedRequests(user.id));
+        Axios.get(`loan-api/rating/${user.id}`)
+            .then(response => {
+                setTotalRating(response.data.data.rating);
+            })
+            .catch(error => {
+                console.log({ error });
+            });
+
+        Axios.get(`loan-api/wallet/${user.id}`)
+            .then(response => {
+                setWallet(response.data.data.rating);
+            })
+            .catch(error => {
+                console.log({ error });
+            });
     }, []);
 
     return (
@@ -31,15 +54,31 @@ const DashboardCards = () => {
                                 <IoMdCash className='card-icon' /> <p className='card-text'>{allRequests ? allRequests.length : 0}</p>
                             </Col>
                             <Col className='d-flex align-items-center justify-content-end'>
-                                <p className='card-total'>Total Lendings</p>
+                                <p className='card-total'>Total Requests</p>
                             </Col>
                         </Row>
                         <Row className='my-2'>
                             <Col className='d-flex align-items-center justify-content-start'>
-                                <IoMdCash className='card-icon' /> <p className='card-text'>{pendingRequests ? pendingRequests.length : 0}</p>
+                                <IoMdCash className='card-icon' /> <p className='card-text'>{acceptedRequests ? acceptedRequests.length : 0}</p>
                             </Col>
                             <Col className='d-flex align-items-center justify-content-end'>
-                                <p className='card-total'>Pending Lendings</p>
+                                <p className='card-total'>Accepted Requests</p>
+                            </Col>
+                        </Row>
+                        <Row className='my-2'>
+                            <Col className='d-flex align-items-center justify-content-start'>
+                                <AiFillStar className='card-icon' /> <p className='card-text'>{totalRating ? totalRating : 0}</p>
+                            </Col>
+                            <Col className='d-flex align-items-center justify-content-end'>
+                                <p className='card-total'>Total Rating</p>
+                            </Col>
+                        </Row>
+                        <Row className='my-2'>
+                            <Col className='d-flex align-items-center justify-content-start'>
+                                <BsFillWalletFill className='card-icon' /> <p className='card-text'>{totalRating ? `$${wallet}` : `$0`}</p>
+                            </Col>
+                            <Col className='d-flex align-items-center justify-content-end'>
+                                <p className='card-total'>Wallet Amount</p>
                             </Col>
                         </Row>
                     </div>
@@ -50,7 +89,7 @@ const DashboardCards = () => {
                     <div className='card-main lending-requests'>
                         <Row className='my-2'>
                             <Col className='text-start'>
-                                <p className='text-light'>Recent Pending Lendings</p>
+                                <p className='text-light'>Recent Requests</p>
                             </Col>
                         </Row>
                         <Row className='my-2'>
