@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Modal, Button, Container } from 'react-bootstrap';
 import ReactStars from "react-rating-stars-component";
-import { useSelector } from 'react-redux';
 import { useTranslation } from "react-i18next";
 
 import Axios from '../../../axios/Axios';
@@ -24,13 +23,13 @@ const RatingModal = ({ id, ...props }) => {
 
         Axios.put(`loan-api/rating`, data)
             .then(response => {
-                console.log(response.data);
+                props.onHide();
                 Toast.success(response.data.message);
             })
             .catch(error => {
                 console.log(error.message);
                 Toast.error(error.message);
-            });;
+            });
     };
 
     return (
