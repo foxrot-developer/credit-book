@@ -30,7 +30,7 @@ const BorrowerRequestsTable = () => {
                 <Col className='d-flex align-items-center justify-content-between mb-3'>
                     <h4 className='fw-bold'>{t('borrowing_text')}</h4>
                     <Button className='px-5 text-light btn custom-btn' onClick={() => setModalShow(true)}>
-                        ADD NEW REQUEST
+                        {t('new_request')}
                     </Button>
                     <NewRequestModal show={modalShow} onHide={() => setModalShow(false)} />
                 </Col>
@@ -38,9 +38,9 @@ const BorrowerRequestsTable = () => {
                     <Table className='table-main' striped bordered hover responsive>
                         <thead>
                             <tr>
-                                <th>Amount</th>
-                                <th>Status</th>
-                                <th>Action</th>
+                                <th>{t('amount_text')}</th>
+                                <th>{t('status_text')}</th>
+                                <th>{t('actions_text')}</th>
                             </tr>
                         </thead>
                         <tbody>

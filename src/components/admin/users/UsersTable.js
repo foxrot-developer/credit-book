@@ -50,7 +50,7 @@ const UsersTable = () => {
                                 <th>{t('current_text')}</th>
                                 <th>{t('email')}</th>
                                 <th>{t('type_text')}</th>
-                                <th>Status</th>
+                                <th>{t('status_text')}</th>
                                 <th>{t('actions_text')}</th>
                             </tr>
                         </thead>
@@ -60,15 +60,15 @@ const UsersTable = () => {
                                     <td>{user.name}</td>
                                     <td>{user.phoneNumber}</td>
                                     <td>{user.studentID}</td>
-                                    <td>1234567890</td>
-                                    <td>Level 1</td>
+                                    <td>{user.nationalID}</td>
+                                    <td>{user.currentLevel}</td>
                                     <td>{user.email}</td>
                                     <td>{user.type}</td>
                                     <td>{user.status}</td>
                                     <td>
                                         <div className='d-flex align-items-center justify-content-start'>
-                                            <p className='me-2 text-danger fw-bold action' onClick={() => dispatch(deleteUser(user.id))}>Delete</p>
-                                            {user.status === "ACTIVE" ? <p className='text-warning fw-bold action' onClick={() => { statusHandler(user.id, "INACTIVE") }}>Block</p> : <p className='text-success fw-bold action' onClick={() => { statusHandler(user.id, "ACTIVE") }}>Unblock</p>}
+                                            <p className='me-2 text-danger fw-bold action' onClick={() => dispatch(deleteUser(user.id))}>{t('delete_text')}</p>
+                                            {user.status === "ACTIVE" ? <p className='text-warning fw-bold action' onClick={() => { statusHandler(user.id, "INACTIVE") }}>{t('block_text')}</p> : <p className='text-success fw-bold action' onClick={() => { statusHandler(user.id, "ACTIVE") }}>{t('unblock_text')}</p>}
                                         </div>
                                     </td>
                                 </tr>

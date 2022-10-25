@@ -47,16 +47,16 @@ function LenderRequestsTable() {
                     <h4 className='fw-bold'>{t('borrowing_text')}</h4>
                 </Col>
                 <Col className='my-2'>
-                    <Button className='px-5 me-3 text-light btn custom-btn' onClick={() => setPendingReqs('pending')}>Pending Requests</Button>
-                    <Button className='px-5 text-light btn custom-btn' onClick={() => setPendingReqs('accepted')}>Your Accepted Requests</Button>
+                    <Button className='px-5 me-3 text-light btn custom-btn' onClick={() => setPendingReqs('pending')}>{t('pending_requests')}</Button>
+                    <Button className='px-5 me-3 text-light btn custom-btn' onClick={() => setPendingReqs('accepted')}>{t('your_accepted')}</Button>
                 </Col>
                 <Col>
                     {pendingReqs === 'pending' && <Table className='table-main' striped bordered hover responsive>
                         <thead>
                             <tr>
-                                <th>Amount</th>
-                                <th>Status</th>
-                                <th>Action</th>
+                                <th>{t('amount_text')}</th>
+                                <th>{t('status_text')}</th>
+                                <th>{t('actions_text')}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -73,9 +73,9 @@ function LenderRequestsTable() {
                     {pendingReqs === 'accepted' && <Table className='table-main' striped bordered hover responsive>
                         <thead>
                             <tr>
-                                <th>Amount</th>
-                                <th>Status</th>
-                                <th>Action</th>
+                                <th>{t('amount_text')}</th>
+                                <th>{t('status_text')}</th>
+                                <th>{t('actions_text')}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -83,7 +83,7 @@ function LenderRequestsTable() {
                                 <tr key={index}>
                                     <td>{`$${request.amount}`}</td>
                                     <td>{request.status}</td>
-                                    <td>{request.status === 'COMPLETED' && <p className='me-2 text-success fw-bold action' onClick={() => modalHandler(request.borrowerID)}>Rate</p>}</td>
+                                    <td>{request.status === 'COMPLETED' && <p className='me-2 text-success fw-bold action' onClick={() => modalHandler(request.borrowerID)}>{t('rate_text')}</p>}</td>
                                 </tr>
                             ))}
                         </tbody>

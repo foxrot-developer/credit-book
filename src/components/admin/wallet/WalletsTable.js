@@ -21,14 +21,14 @@ const WalletsTable = () => {
         <Zoom>
             <Row className='my-5 d-flex flex-column'>
                 <Col>
-                    <h4 className='fw-bold'>Wallets</h4>
+                    <h4 className='fw-bold'>{t('wallet_heading')}</h4>
                 </Col>
                 <Col>
                     <Table className='table-main' striped bordered hover responsive>
                         <thead>
                             <tr>
-                                <th>Amount</th>
-                                <th>Status</th>
+                                <th>{t('amount_text')}</th>
+                                <th>{t('status_text')}</th>
                             </tr>
                         </thead>
                         <tbody>

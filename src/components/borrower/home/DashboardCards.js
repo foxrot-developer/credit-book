@@ -52,7 +52,7 @@ const DashboardCards = () => {
                                 <IoMdCash className='card-icon' /> <p className='card-text'>{allRequests ? allRequests.length : 0}</p>
                             </Col>
                             <Col className='d-flex align-items-center justify-content-end'>
-                                <p className='card-total'>Total Borrows</p>
+                                <p className='card-total'>{t('total_borrows')}</p>
                             </Col>
                         </Row>
                         <Row className='my-2'>
@@ -60,7 +60,7 @@ const DashboardCards = () => {
                                 <IoMdCash className='card-icon' /> <p className='card-text'>{pendingRequests ? pendingRequests.length : 0}</p>
                             </Col>
                             <Col className='d-flex align-items-center justify-content-end'>
-                                <p className='card-total'>Pending Borrows</p>
+                                <p className='card-total'>{t('pending_borrows')}</p>
                             </Col>
                         </Row>
                         <Row className='my-2'>
@@ -68,7 +68,7 @@ const DashboardCards = () => {
                                 <AiFillStar className='card-icon' /> <p className='card-text'>{totalRating ? totalRating : 0}</p>
                             </Col>
                             <Col className='d-flex align-items-center justify-content-end'>
-                                <p className='card-total'>Total Rating</p>
+                                <p className='card-total'>{t('total_rating')}</p>
                             </Col>
                         </Row>
                         <Row className='my-2'>
@@ -76,7 +76,7 @@ const DashboardCards = () => {
                                 <BsFillWalletFill className='card-icon' /> <p className='card-text'>{wallet ? `$${wallet}` : `$0`}</p>
                             </Col>
                             <Col className='d-flex align-items-center justify-content-end'>
-                                <p className='card-total'>Wallet Amount</p>
+                                <p className='card-total'>{t('wallet_amount')}</p>
                             </Col>
                         </Row>
                     </div>
@@ -87,7 +87,7 @@ const DashboardCards = () => {
                     <div className='card-main lending-requests'>
                         <Row className='my-2'>
                             <Col className='text-start'>
-                                <p className='text-light'>Recent Pending Borrows</p>
+                                <p className='text-light'>{t('recent_pending')}</p>
                             </Col>
                         </Row>
                         <Row className='my-2'>

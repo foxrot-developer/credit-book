@@ -38,7 +38,7 @@ const LenderRequest = () => {
                 <Menu className='mt-5'>
                     <NavLink to='/dashboard/lender' className='menu-item-link'><MenuItem><AiFillDashboard className='menu-icon' /> {t('dashboard_text')}</MenuItem></NavLink>
                     <NavLink to='/dashboard/borrower/lending-requests' className='menu-item-link'><MenuItem><IoMdCash className='menu-icon' /> {t('borrowing_text')}</MenuItem></NavLink>
-                    <div className='menu-item-link' onClick={LogoutHandler}><MenuItem><RiLogoutBoxRFill className='menu-icon' />Logout</MenuItem></div>
+                    <div className='menu-item-link' onClick={LogoutHandler}><MenuItem><RiLogoutBoxRFill className='menu-icon' />{t('logout_menu')}</MenuItem></div>
                 </Menu>
             </Sidebar>
             <main className='w-100 page-main'>

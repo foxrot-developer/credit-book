@@ -3,6 +3,7 @@ import * as Yup from 'yup';
 import { Formik, Form } from 'formik';
 import { Modal, Button, Container } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from "react-i18next";
 
 import TextField from '../../../shared/TextField';
 import { addNewRequest } from '../../../store/StoreIndex';
@@ -10,6 +11,7 @@ import { addNewRequest } from '../../../store/StoreIndex';
 const NewRequestModal = (props) => {
 
     const dispatch = useDispatch();
+    const { t } = useTranslation();
 
     const user = useSelector(state => state.user.user);
 
@@ -40,7 +42,7 @@ const NewRequestModal = (props) => {
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    Add New Request
+                    {t('new_request')}
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
@@ -53,10 +55,10 @@ const NewRequestModal = (props) => {
                         {(formik) => (
                             <React.Fragment>
                                 <Form>
-                                    <TextField label='Amount' name='amount' type='number' />
+                                    <TextField label={t('amount_text')} name='amount' type='number' />
                                     <div className='text-center'>
                                         <Button type='submit' className='px-5 btn custom-btn'>
-                                            ADD REQUEST
+                                            {t('add_request')}
                                         </Button>
                                     </div>
                                 </Form>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Modal, Button, Container } from 'react-bootstrap';
 import ReactStars from "react-rating-stars-component";
 import { useSelector } from 'react-redux';
+import { useTranslation } from "react-i18next";
 
 import Axios from '../../../axios/Axios';
 import Toast from '../../../shared/Toast';
@@ -9,6 +10,7 @@ import Toast from '../../../shared/Toast';
 const RatingModal = ({ id, ...props }) => {
 
     const [rating, setRating] = useState(0);
+    const { t } = useTranslation();
 
     const ratingChanged = (newRating) => {
         setRating(newRating);
@@ -43,7 +45,7 @@ const RatingModal = ({ id, ...props }) => {
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    Rate Your Experience
+                    {t('rate_experience')}
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
@@ -55,7 +57,7 @@ const RatingModal = ({ id, ...props }) => {
                         activeColor="#ffd700"
                     />
                     <Button className='px-5 btn custom-btn mt-5' disabled={rating === 0} onClick={ratingHandler}>
-                        SUBMIT
+                        {t('submit')}
                     </Button>
                 </Container>
             </Modal.Body>

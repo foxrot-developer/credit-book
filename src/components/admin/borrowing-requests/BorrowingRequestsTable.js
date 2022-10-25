@@ -61,19 +61,19 @@ const BorrowingRequestsTable = () => {
                     <h4 className='fw-bold'>{t('borrowing_text')}</h4>
                 </Col>
                 <Col className='my-2'>
-                    <Button className='px-5 me-1 text-light btn custom-btn' onClick={() => setAllReqs('all')}>All</Button>
-                    <Button className='px-5 me-1 text-light btn custom-btn' onClick={() => setAllReqs('pending')}>Pending</Button>
-                    <Button className='px-5 me-1 text-light btn custom-btn' onClick={() => setAllReqs('initiated')}>Initiated</Button>
-                    <Button className='px-5 me-1 text-light btn custom-btn' onClick={() => setAllReqs('borrowed')}>Borrowed</Button>
-                    <Button className='px-5 me-1 text-light btn custom-btn' onClick={() => setAllReqs('returned')}>Return</Button>
-                    <Button className='px-5 text-light btn custom-btn' onClick={() => setAllReqs('completed')}>Completed</Button>
+                    <Button className='px-5 me-1 text-light btn custom-btn' onClick={() => setAllReqs('all')}>{t('all_text')}</Button>
+                    <Button className='px-5 me-1 text-light btn custom-btn' onClick={() => setAllReqs('pending')}>{t('pending_text')}</Button>
+                    <Button className='px-5 me-1 text-light btn custom-btn' onClick={() => setAllReqs('initiated')}>{t('initiated_text')}</Button>
+                    <Button className='px-5 me-1 text-light btn custom-btn' onClick={() => setAllReqs('borrowed')}>{t('borrowed_text')}</Button>
+                    <Button className='px-5 me-1 text-light btn custom-btn' onClick={() => setAllReqs('returned')}>{t('return_text')}</Button>
+                    <Button className='px-5 me-1 text-light btn custom-btn' onClick={() => setAllReqs('completed')}>{t('completed_text')}</Button>
                 </Col>
                 <Col>
                     {allReqs === 'all' && <Table className='table-main' striped bordered hover responsive>
                         <thead>
                             <tr>
                                 <th>{t('borrowing_amount_text')}</th>
-                                <th>Status</th>
+                                <th>{t('status_text')}</th>
                                 <th>{t('actions_text')}</th>
                             </tr>
                         </thead>
@@ -99,7 +99,7 @@ const BorrowingRequestsTable = () => {
                         <thead>
                             <tr>
                                 <th>{t('borrowing_amount_text')}</th>
-                                <th>Status</th>
+                                <th>{t('status_text')}</th>
                                 <th>{t('actions_text')}</th>
                             </tr>
                         </thead>
@@ -125,7 +125,7 @@ const BorrowingRequestsTable = () => {
                         <thead>
                             <tr>
                                 <th>{t('borrowing_amount_text')}</th>
-                                <th>Status</th>
+                                <th>{t('status_text')}</th>
                                 <th>{t('actions_text')}</th>
                             </tr>
                         </thead>
@@ -146,7 +146,7 @@ const BorrowingRequestsTable = () => {
                         <thead>
                             <tr>
                                 <th>{t('borrowing_amount_text')}</th>
-                                <th>Status</th>
+                                <th>{t('status_text')}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -163,8 +163,8 @@ const BorrowingRequestsTable = () => {
                         <thead>
                             <tr>
                                 <th>{t('borrowing_amount_text')}</th>
-                                <th>Status</th>
-                                <th>Action</th>
+                                <th>{t('status_text')}</th>
+                                <th>{t('actions_text')}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -184,7 +184,7 @@ const BorrowingRequestsTable = () => {
                         <thead>
                             <tr>
                                 <th>{t('borrowing_amount_text')}</th>
-                                <th>Status</th>
+                                <th>{t('status_text')}</th>
                             </tr>
                         </thead>
                         <tbody>

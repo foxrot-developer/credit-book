@@ -42,8 +42,8 @@ const Wallet = () => {
                     <NavLink to='/dashboard/admin/users' className='menu-item-link'><MenuItem><FaUserFriends className='menu-icon' /> {t('users_text')}</MenuItem></NavLink>
                     {/**<NavLink to='/dashboard/admin/lending-requests' className='menu-item-link'><MenuItem><RiMoneyDollarCircleFill className='menu-icon' /> {t('lending_text')}</MenuItem></NavLink>**/}
                     <NavLink to='/dashboard/admin/borrowing-requests' className='menu-item-link'><MenuItem><IoMdCash className='menu-icon' /> {t('borrowing_text')}</MenuItem></NavLink>
-                    <NavLink to='/dashboard/admin/wallets' className='menu-item-link'><MenuItem><BsFillWalletFill className='menu-icon' />Wallet</MenuItem></NavLink>
-                    <div className='menu-item-link' onClick={LogoutHandler}><MenuItem><RiLogoutBoxRFill className='menu-icon' />Logout</MenuItem></div>
+                    <NavLink to='/dashboard/admin/wallets' className='menu-item-link'><MenuItem><BsFillWalletFill className='menu-icon' />{t('wallet_menu')}</MenuItem></NavLink>
+                    <div className='menu-item-link' onClick={LogoutHandler}><MenuItem><RiLogoutBoxRFill className='menu-icon' />{t('logout_menu')}</MenuItem></div>
                 </Menu>
             </Sidebar>
             <main className='w-100 page-main'>
