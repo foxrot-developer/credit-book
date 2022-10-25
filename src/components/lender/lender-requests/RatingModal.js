@@ -16,15 +16,13 @@ const RatingModal = ({ id, ...props }) => {
         setRating(newRating);
     };
 
-    const ratingHandler = (id) => {
+    const ratingHandler = () => {
         const data = {
-            rating: {
-                id: id,
-                rating: rating
-            }
+            rating: rating,
+            userID: id,
         }
 
-        Axios.patch(`loan-api/user/${id}`, data)
+        Axios.put(`loan-api/rating`, data)
             .then(response => {
                 console.log(response.data);
                 Toast.success(response.data.message);
