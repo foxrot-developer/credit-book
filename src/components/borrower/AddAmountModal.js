@@ -5,10 +5,10 @@ import { Modal, Button, Container } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from "react-i18next";
 
-import TextField from '../../../shared/TextField';
-import { addNewRequest } from '../../../store/StoreIndex';
+import TextField from '../../shared/TextField';
+import { addWalletAmount } from '../../store/StoreIndex';
 
-const NewRequestModal = (props) => {
+const AddAmountModal = (props) => {
 
     const dispatch = useDispatch();
     const { t } = useTranslation();
@@ -25,10 +25,10 @@ const NewRequestModal = (props) => {
 
     const addRequestHandler = (values) => {
         const data = {
-            userID: user.id,
+            id: user.id,
             amount: +values.amount
         };
-        dispatch(addNewRequest(data, props.onHide));
+        dispatch(addWalletAmount(data, props.onHide));
     }
 
     return (
@@ -41,7 +41,7 @@ const NewRequestModal = (props) => {
         >
             <Modal.Header closeButton>
                 <Modal.Title id="contained-modal-title-vcenter">
-                    {t('new_request')}
+                    {t('add_amount')}
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
@@ -57,7 +57,7 @@ const NewRequestModal = (props) => {
                                     <TextField label={t('amount_text')} name='amount' type='number' />
                                     <div className='text-center'>
                                         <Button type='submit' className='px-5 btn custom-btn'>
-                                            {t('add_request')}
+                                            {t('submit')}
                                         </Button>
                                     </div>
                                 </Form>
@@ -70,4 +70,4 @@ const NewRequestModal = (props) => {
     )
 }
 
-export default NewRequestModal;
+export default AddAmountModal;

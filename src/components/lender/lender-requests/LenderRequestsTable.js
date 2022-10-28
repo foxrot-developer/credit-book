@@ -27,11 +27,19 @@ function LenderRequestsTable() {
 
     const acceptRequestHandler = id => {
         const data = {
-            lenderID: user.id,
-            status: "INITIATED"
-        }
+            "currency": "SAR",
+            "callback_url": "https://example.com/orders",
+            "source": {
+                "type": "creditcard",
+                "name": "Lender",
+                "number": "4374530018379954",
+                "cvc": 123,
+                "month": 6,
+                "year": 25
+            }
+        };
 
-        dispatch(acceptRequest(data, id));
+        dispatch(acceptRequest(data, id, user.id));
     };
 
     useEffect(() => {

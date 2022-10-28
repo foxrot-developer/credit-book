@@ -79,5 +79,9 @@
   "pending_requests": "الطلبات المعلقة",
   "your_accepted": "طلباتك المقبولة",
   "rate_text": "معدل",
-  "rate_experience": "قيم تجربتك"
+  "rate_experience": "قيم تجربتك",
+  "min_amount": "الحد الأدنى لمبلغ الطلب 200",
+  "comp_text": "مكتمل",
+  "add_amount": "أضف المبلغ",
+  "req_amount": "المبلغ مطلوب"
 }

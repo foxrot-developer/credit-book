@@ -18,13 +18,15 @@ export {
     getAllWallets,
     adminLogout,
     getReturnRequests,
-    getCompletedRequests
+    getCompletedRequests,
+    statusUpdate
 } from './admin/actions/actionCreators';
 
 export {
     allBorrowerRequests,
     addNewRequest,
-    returnAmount
+    returnAmount,
+    addWalletAmount
 } from './borrower/actions/actionCreators';
 
 export {

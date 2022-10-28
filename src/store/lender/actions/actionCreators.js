@@ -32,10 +32,11 @@ export const lenderAcceptedRequests = (id) => dispatch => {
         });
 };
 
-export const acceptRequest = (data, id) => dispatach => {
-    Axios.patch(`loan-api/request/${id}`, data)
+export const acceptRequest = (data, reqId, userId) => dispatach => {
+    Axios.post(`loan-api/payment/create-payment-for-admin-by-lender/${reqId}/${userId}`, data)
         .then(response => {
             dispatach(allLenderPendingRequests());
+            dispatach(lenderAcceptedRequests(userId));
             Toast.success(response.data.message);
         })
         .catch(error => {

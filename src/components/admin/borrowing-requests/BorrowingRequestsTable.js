@@ -4,7 +4,7 @@ import { Zoom } from "react-awesome-reveal";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from 'react-redux';
 
-import { getAllRequests, updateRequestStatus, getPendingRequests, getInitiatedRequests, createInvoice, getBorrowedRequests, getReturnRequests, getCompletedRequests } from '../../../store/StoreIndex';
+import { getAllRequests, updateRequestStatus, getPendingRequests, getInitiatedRequests, createInvoice, getBorrowedRequests, getReturnRequests, getCompletedRequests, statusUpdate } from '../../../store/StoreIndex';
 
 const BorrowingRequestsTable = () => {
 
@@ -25,21 +25,37 @@ const BorrowingRequestsTable = () => {
             status
         }
 
-        dispatch(updateRequestStatus(data, id));
+        dispatch(statusUpdate(data, id));
     };
 
     const completeHandler = id => {
         const data = {
-            status: 'COMPLETED'
-        }
+            "currency": "SAR",
+            "callback_url": "https://example.com/orders",
+            "source": {
+                "type": "creditcard",
+                "name": "Admin",
+                "number": "4374530018379954",
+                "cvc": 123,
+                "month": 6,
+                "year": 25
+            }
+        };
         dispatch(updateRequestStatus(data, id));
     };
 
-    const invoiceHandler = (amount, id) => {
+    const invoiceHandler = (id) => {
         const data = {
-            amount: +amount,
-            currency: "SAR",
-            description: "kindle paperwhite"
+            "currency": "SAR",
+            "callback_url": "https://example.com/orders",
+            "source": {
+                "type": "creditcard",
+                "name": "Admin",
+                "number": "4374530018379954",
+                "cvc": 123,
+                "month": 6,
+                "year": 25
+            }
         };
 
         dispatch(createInvoice(data, id));
@@ -135,7 +151,7 @@ const BorrowingRequestsTable = () => {
                                     <td>{`$${request.amount}`}</td>
                                     <td>{request.status}</td>
                                     <td>
-                                        <p className='me-2 text-success fw-bold action' onClick={() => invoiceHandler(request.amount, request.id)}>Create Invoice</p>
+                                        <p className='me-2 text-success fw-bold action' onClick={() => invoiceHandler(request.id)}>Create Invoice</p>
                                     </td>
                                 </tr>
                             ))}
@@ -173,7 +189,7 @@ const BorrowingRequestsTable = () => {
                                     <td>{`$${request.amount}`}</td>
                                     <td>{request.status}</td>
                                     <td>
-                                        <p className='me-2 text-success fw-bold action' onClick={() => completeHandler(request.id)}>Complete</p>
+                                        <p className='me-2 text-success fw-bold action' onClick={() => completeHandler(request.id)}>{t('comp_text')}</p>
                                     </td>
                                 </tr>
                             ))}

@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Sidebar, Menu, MenuItem, useProSidebar } from 'react-pro-sidebar';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { FaUserFriends } from 'react-icons/fa';
-import { RiMoneyDollarCircleFill, RiLogoutBoxRFill } from 'react-icons/ri';
+import { RiLogoutBoxRFill } from 'react-icons/ri';
 import { IoMdCash } from 'react-icons/io';
 import { AiFillDashboard } from 'react-icons/ai';
 import { BsFillWalletFill } from 'react-icons/bs';

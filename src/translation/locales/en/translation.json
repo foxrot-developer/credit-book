@@ -78,5 +78,9 @@
     "pending_requests": "Pending Requests",
     "your_accepted": "Your Accepted Requests",
     "rate_text": "Rate",
-    "rate_experience": "Rate Your Experience"
+    "rate_experience": "Rate Your Experience",
+    "min_amount": "Minimum request amount is 200",
+    "comp_text": "Complete",
+    "add_amount": "ADD AMOUNT",
+    "req_amount": "Amount is required"
 }

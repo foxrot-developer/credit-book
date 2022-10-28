@@ -17,10 +17,11 @@ export const allBorrowerRequests = id => dispatch => {
         });
 };
 
-export const addNewRequest = (data) => dispatch => {
+export const addNewRequest = (data, onHide) => dispatch => {
     Axios.post('loan-api/request', data)
         .then(response => {
-            dispatch(allBorrowerRequests(data.borrowerID));
+            dispatch(allBorrowerRequests(data.userID));
+            onHide();
             Toast.success(response.data.message);
         })
         .catch(error => {
@@ -31,9 +32,18 @@ export const addNewRequest = (data) => dispatch => {
 
 export const returnAmount = (id, userId) => dispatch => {
     const data = {
-        status: "RETURN"
+        "currency": "SAR",
+        "callback_url": "https://example.com/orders",
+        "source": {
+            "type": "creditcard",
+            "name": "Borrower",
+            "number": "4374530018379954",
+            "cvc": 123,
+            "month": 6,
+            "year": 25
+        }
     };
-    Axios.patch(`loan-api/request/${id}`, data)
+    Axios.post(`loan-api/payment/create-payment-for-admin-by-borrower/${id}`, data)
         .then(response => {
             dispatch(allBorrowerRequests(userId));
             Toast.success(response.data.message);
@@ -49,4 +59,16 @@ export const borrowerLogout = (navigate) => dispatch => {
         type: actionTypes.BORROWER_LOGOUT,
     });
     dispatch(userLogout(navigate));
+};
+
+export const addWalletAmount = (data, onHide) => dispatch => {
+    Axios.post(`loan-api/wallet/${data.id}/${data.amount}`)
+        .then(response => {
+            onHide();
+            Toast.success(response.data.message);
+        })
+        .catch(error => {
+            console.log({ error });
+            Toast.error(error.message);
+        });
 };

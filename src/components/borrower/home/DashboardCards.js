@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Col, Row } from 'react-bootstrap';
+import { Col, Row, Button } from 'react-bootstrap';
 import { FaUserFriends } from 'react-icons/fa';
 import { IoMdCash } from 'react-icons/io';
 import { AiFillStar } from 'react-icons/ai';
@@ -10,6 +10,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { allBorrowerRequests } from '../../../store/StoreIndex';
 import Axios from '../../../axios/Axios';
+import AddAmountModal from '../AddAmountModal';
 
 const DashboardCards = () => {
     const dispatch = useDispatch();
@@ -20,6 +21,7 @@ const DashboardCards = () => {
 
     const [totalRating, setTotalRating] = useState(0);
     const [wallet, setWallet] = useState(0);
+    const [modalShow, setModalShow] = useState(false);
 
     const pendingRequests = allRequests && allRequests.filter(request => request.status === 'PENDING');
 
@@ -35,15 +37,23 @@ const DashboardCards = () => {
 
         Axios.get(`loan-api/wallet/${user.id}`)
             .then(response => {
-                setWallet(response.data.data.rating);
+                setWallet(response.data.data.amount);
             })
             .catch(error => {
                 console.log({ error });
             });
-    }, []);
+    }, [user.id]);
 
     return (
         <Row>
+            <Row>
+                <Col>
+                    <Button type='submit' className='px-5 text-light mt-3 btn custom-btn' onClick={() => setModalShow(true)}>
+                        {t('add_amount')}
+                    </Button>
+                    <AddAmountModal show={modalShow} onHide={() => setModalShow(false)} />
+                </Col>
+            </Row>
             <Col xs='12' lg='4'>
                 <Zoom>
                     <div className='card-main'>
